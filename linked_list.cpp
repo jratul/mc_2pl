@@ -2,6 +2,14 @@
 #include"headers/linked_list.h"
 using namespace std;
 
+void createNewNode(node* newNode, int threadNum, bool isWrite) {
+	newNode->threadNum = threadNum;
+	newNode->isWrite = isWrite;
+	newNode->next = NULL;
+	newNode->pre = NULL;
+	cout << "complete creation" << endl;
+}
+
 LinkedList::LinkedList() {
 	listId = 0;
 	head = NULL;

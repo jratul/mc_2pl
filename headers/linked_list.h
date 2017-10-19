@@ -3,9 +3,12 @@
 
 struct node {
 	int threadNum;
+	bool isWrite;
 	node* next;
 	node* pre;
 };
+
+void createNewNode(node* newNode, int threadNum, bool isWrite);
 
 class LinkedList {	
 private:
