@@ -9,6 +9,7 @@ bool isSameNode(node* node1, node* node2) {
 }
 
 void rwLock(int recordNum, long threadNum, bool isWrite) {
+	cout << "rwlock start" << endl;
 	node* headNode = (record[recordNum].getLockList())->getHead();
 	node* targetTempNode = new node;
 	targetTempNode->threadNum = threadNum;
