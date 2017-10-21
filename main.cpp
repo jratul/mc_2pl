@@ -12,6 +12,7 @@ int n;
 int r;
 int e;
 int globalExcutionOrder;
+pthread_t globalMutex = PTHREAD_MUTEX_INITIALIZER;
 
 int main(int argc, char* argv[]) {
 	if(argc != 4) {

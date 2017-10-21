@@ -11,7 +11,6 @@ void* threadFunction(void* arg) {
 	threadParam * tp = (threadParam*)arg;
 	long tid = tp->threadNum;
 	int maxRecordNum = tp->maxRecordNum;
-	extern int globalExecutionOrder;
 
 	while(globalExecutionOrder < e) {
 		int* randomNumbers = new int[CHOOSING_THREAD_NUM];

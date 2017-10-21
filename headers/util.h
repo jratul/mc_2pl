@@ -11,7 +11,7 @@ extern int n;
 extern int r;
 extern int e;
 extern int globalExcutionOrder;
-extern pthread_mutex_t globalMutex = PTHREAD_MUTEX_INITIALIZER;
+extern pthread_mutex_t globalMutex;
 extern Record* record;
 
 void logLine(string logData);

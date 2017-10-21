@@ -3,7 +3,7 @@
 #include "util.h"
 
 bool isSameNode(node* node1, node* node2);
-void rwLock(int recordNum, int threadNum, bool isWrite);
-void rwUnlock(int recordNum, int threadNum, bool isWrite);
+void rwLock(int recordNum, long threadNum, bool isWrite);
+void rwUnlock(int recordNum, long threadNum, bool isWrite);
 
 #endif
