@@ -46,7 +46,7 @@ void* threadFunction(void* arg) {
 		pthread_mutex_unlock(&globalMutex);
 		logLine("before assign j");
 		j = i + record[randomNumbers[1]].getRecordVal();
-		logLIne("after assign j");
+		logLine("after assign j");
 		logLine("after second");
 
 		logLine("before third");
