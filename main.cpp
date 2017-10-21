@@ -51,16 +51,16 @@ int main(int argc, char* argv[]) {
 		record[i].initRecord(i, 100);
 	}
 
-	threads = new pthread_t;
+	threads = new pthread_t[1];
 	threadParam tp;
 	tp.threadNum = 0;
 	tp.maxRecordNum = r;
-	if(pthread_create(&threads, 0, threadFunction, (void*)&tp) < 0) {
+	if(pthread_create(&threads[0], 0, threadFunction, (void*)&tp) < 0) {
 		printf("pthread_create error!\n");
 		return 0;
 	}
 
-	pthread_join(threads,NULL);
+	pthread_join(threads[0],NULL);
 	delete threads;
 
 
