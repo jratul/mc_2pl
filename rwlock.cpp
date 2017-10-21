@@ -58,10 +58,12 @@ void rwLock(int recordNum, long threadNum, bool isWrite) {
 }
 
 void rwUnlock(int recordNum, long threadNum, bool isWrite) {
+	cout << "rwunlock start" << endl;
 	node* headNode = (record[recordNum].getLockList())->getHead();
 	node* targetTempNode = new node;
 	targetTempNode->threadNum = threadNum;
 	targetTempNode->isWrite = isWrite;
+	cout << "rwunlock before while" << endl;
 	while(true) {
 		cout << headNode->threadNum << " " << targetTempNode->threadNum << endl;
 		cout << headNode->isWrite << ", " << targetTempNode->isWrite << endl;
@@ -71,9 +73,12 @@ void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 		}
 	}
 
+	cout << "rwunlock before del node" << endl;
 	(record[recordNum].getLockList())->delNodeFromHead();
 
 	delete targetTempNode;
 	//delete headNode;
+
+	cout << "rwunlock end" << endl;
 }
 
