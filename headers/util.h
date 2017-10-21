@@ -10,7 +10,7 @@ using namespace std;
 extern int n;
 extern int r;
 extern int e;
-extern int globalExcutionOrder;
+extern int globalExecutionOrder;
 extern pthread_mutex_t globalMutex;
 extern Record* record;
 
