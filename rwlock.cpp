@@ -1,5 +1,3 @@
-#include "headers/util"
-
 bool isSameNode(node* node1, node* node2) {
 	if((node1->threadNum == node2->threadNum) && (node1->isWrite == node2->isWrite)) {
 		return true;
@@ -8,7 +6,7 @@ bool isSameNode(node* node1, node* node2) {
 	}
 }
 
-void rwLock(int recordNum, int threadNum, bool isWrite) {
+void rwLock(int recordNum, long threadNum, bool isWrite) {
 	node* headNode = (record[recordNum].getLockList())->getHead();
 	node* targetTempNode = new node;
 	targetTempNode->threadNum = threadNum;
@@ -46,7 +44,7 @@ void rwLock(int recordNum, int threadNum, bool isWrite) {
 	return NULL;
 }
 
-void rwUnlock(int recordNum, int threadNum, bool isWrite) {
+void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 	node* headNode = (record[recordNum].getLockList())->getHead();
 	node* targetTempNode = new node;
 	targetTempNode->threadNum = threadNum;
