@@ -12,7 +12,7 @@ int n;
 int r;
 int e;
 int globalExcutionOrder;
-pthread_t globalMutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_t globalMutex;
 
 int main(int argc, char* argv[]) {
 	if(argc != 4) {
@@ -26,6 +26,7 @@ int main(int argc, char* argv[]) {
 	globalExcutionOrder = 0;
 
 	pthread_t* threads;
+	globalMutex = PTHREAD_MUTEX_INITIALIZER;
 
 /*
 	LinkedList* lockTableList = new LinkedList[n];
