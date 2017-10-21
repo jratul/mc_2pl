@@ -5,7 +5,7 @@
 int n;
 int r;
 int e;
-int globalExcutionOrder;
+int globalExecutionOrder;
 
 void* threadFunction(void* arg) {
 	threadParam * tp = (threadParam*)arg;
