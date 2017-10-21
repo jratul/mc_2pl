@@ -1,4 +1,4 @@
-#include "headers/util"
+#include "headers/util.h"
 
 
 void* threadFunction(void* arg) {
