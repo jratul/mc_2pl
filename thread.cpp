@@ -40,7 +40,6 @@ void* threadFunction(void* arg) {
 
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[1], tid, true);
-		cout << newNode[1].threadNum << endl;
 		record[randomNumbers[1]].pushBackLockList(&newNode[1]);
 		rwLock(randomNumbers[1], tid, true);
 		pthread_mutex_unlock(&globalMutex);
