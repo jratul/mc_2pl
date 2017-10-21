@@ -20,7 +20,7 @@ linked_list.o : headers/linked_list.h linked_list.cpp
 util.o : headers/util.h headers/record.h util.cpp
 	g++ -c util.cpp
 
-thread.o : headers/util.h headers/thread.h thread.cpp
+thread.o : headers/util.h headers/thread.h headers/rwlock.h thread.cpp
 	g++ -c thread.cpp
 
 rwlock.h : headers/rwlock.h headers/util.h rwlock.cpp
