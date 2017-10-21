@@ -42,8 +42,6 @@ void rwLock(int recordNum, long threadNum, bool isWrite) {
 
 	delete targetTempNode;
 	delete headNode;
-
-	return NULL;
 }
 
 void rwUnlock(int recordNum, long threadNum, bool isWrite) {
@@ -53,14 +51,12 @@ void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 	targetTempNode->isWrite = isWrite;
 	while(true) {
 		if(isSameNode(headNode, targetTempNode)) {
-			(record[recordNum].getLockList)->delNodeFromHead();
+			(record[recordNum].getLockList())->delNodeFromHead();
 			break;
 		}
 	}
 
 	delete targetTempNode;
 	delete headNode;
-
-	return NULL;
 }
 
