@@ -2,7 +2,6 @@
 #define THREAD
 #include<pthread.h>
 #include "util.h"
-#include "thread.h"
 #include "rwlock.h"
 
 struct threadParam {

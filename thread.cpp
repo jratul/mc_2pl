@@ -1,6 +1,9 @@
+/*
 #include "headers/util.h"
 #include "headers/thread.h"
 #include "headers/rwlock.h"
+*/
+#include "headers/thread.h"
 
 /*
 int n;
