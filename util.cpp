@@ -6,8 +6,7 @@ void logLine(string logData) {
 	cout << logData << endl;
 }
 
-int* getRandomNumbers(int* randomNumbers, int maxRecordNum) {
-	srand((unsigned)time(NULL)); 
+int* getRandomNumbers(int* randomNumbers, int maxRecordNum) { 
 
 	for(int i=0;i<CHOOSING_THREAD_NUM;i++) {
 		while(true) {

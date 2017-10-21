@@ -16,6 +16,8 @@ pthread_mutex_t globalMutex = PTHREAD_MUTEX_INITIALIZER;
 Record* record;
 
 int main(int argc, char* argv[]) {
+	srand((unsigned)time(NULL));
+	
 	if(argc != 4) {
 		printf("command : ./run N R E\n");
 		exit(1);
