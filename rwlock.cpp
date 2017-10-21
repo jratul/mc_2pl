@@ -76,6 +76,7 @@ void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 	cout << "rwunlock before del node" << endl;
 	(record[recordNum].getLockList())->delNodeFromHead();
 
+	cout << "rwunlock before delete targetNode" << endl;
 	delete targetTempNode;
 	//delete headNode;
 
