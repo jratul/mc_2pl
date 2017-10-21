@@ -72,13 +72,14 @@ void LinkedList::addNodeToTail(node *newNode) {
 }
 
 void LinkedList::delNodeFromHead(void) {
-	node* temp = head;
 	if(head->next != NULL) {
 		if(cursor == head) {
 			cursor = head->next;
 		} 
 		head = head->next;
 		head->pre = NULL;
+	} else {
+		head = NULL;
 	}
 }
 
@@ -90,6 +91,8 @@ void LinkedList::delNodeFromTail(void) {
 		}
 		tail = tail->pre;
 		tail->next = NULL;
+	} else {
+		tail = NULL;
 	}
 }
 
