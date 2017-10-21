@@ -1,9 +1,9 @@
 #ifndef THREAD
 #define THREAD
 #include<pthread.h>
-#include "headers/util.h"
-#include "headers/thread.h"
-#include "headers/rwlock.h"
+#include "util.h"
+#include "thread.h"
+#include "rwlock.h"
 
 struct threadParam {
 	long threadNum;
