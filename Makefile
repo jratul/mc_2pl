@@ -21,7 +21,7 @@ util.o : headers/record.h headers/util.h util.cpp
 	g++ -c util.cpp
 
 thread.o : headers/thread.h headers/rwlock.h headers/util.h thread.cpp
-	g++ -c thread.cpp
+	g++ -c thread.cpp -lpthread
 
 rwlock.h : headers/rwlock.h headers/util.h rwlock.cpp
 	g++ -c rwlock.cpp
