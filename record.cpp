@@ -11,8 +11,5 @@ LinkedList* Record::getLockList(void) { return lockList; }
 void Record::setRecordId(int recordId) { this->recordId = recordId; }
 void Record::setRecordVal(long recordVal) { this->recordVal = recordVal; }
 void Record::pushBackLockList(node* newNode) {
-	//const ListItem* listItem = new ListItem(threadId, isWrite);
-	//lockList.push_back(listItem);
 	lockList->addNodeToTail(newNode);
-	cout << "complete add node" << endl;
 }
