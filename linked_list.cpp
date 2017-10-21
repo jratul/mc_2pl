@@ -87,8 +87,6 @@ void LinkedList::delNodeFromHead(void) {
 		head = head->next;
 		head->pre = NULL;
 	}
-	
-	delete temp;
 }
 
 void LinkedList::delNodeFromTail(void) {
@@ -100,8 +98,6 @@ void LinkedList::delNodeFromTail(void) {
 		tail = tail->pre;
 		tail->next = NULL;
 	}
-
-	delete temp;
 }
 
 
