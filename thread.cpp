@@ -23,6 +23,10 @@ void* threadFunction(void* arg) {
 		long i,j,k;
 		node* newNode = new node[CHOOSING_THREAD_NUM];
 
+		for(int idx=0;idx<CHOOSING_THREAD_NUM;idx++) {
+			randomNumbers[idx] = -1;
+		}
+
 		randomNumbers = getRandomNumbers(randomNumbers, maxRecordNum);
 
 		pthread_mutex_lock(&globalMutex);
