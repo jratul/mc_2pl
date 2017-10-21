@@ -11,7 +11,7 @@ int r;
 int e;
 int globalExecutionOrder;
 */
-int globalExecutionOrder;
+//int globalExecutionOrder;
 
 void* threadFunction(void* arg) {
 	threadParam * tp = (threadParam*)arg;
