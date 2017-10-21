@@ -8,11 +8,13 @@
 #include "headers/thread.h"
 using namespace std;
 
+/*
 int n;
 int r;
 int e;
 int globalExcutionOrder;
 pthread_mutex_t globalMutex;
+*/
 
 int main(int argc, char* argv[]) {
 	if(argc != 4) {
