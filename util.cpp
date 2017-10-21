@@ -32,5 +32,5 @@ int* getRandomNumbers(int* randomNumbers, int maxRecordNum) {
 }
 
 void printCommitLog(int commitId, int* idx, long valI, long valJ, long valK) {
-	cout << commitId << " " << idx[0] << " " << idx[1] << " " << idx[2] << " " << valI << " " << valJ << " " << valK << endl;
+	cout << commitId << " " << idx[0]+1 << " " << idx[1]+1 << " " << idx[2]+1 << " " << valI << " " << valJ << " " << valK << endl;
 }
