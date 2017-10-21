@@ -20,11 +20,14 @@ void rwLock(int recordNum, long threadNum, bool isWrite) {
 		if(isSameNode(headNode, targetTempNode)) {
 			break;
 		}
+		cout << "rwlock while after issamenode" << endl;
 
 		if(!isWrite) {
+			cout << "rwlock while if" << endl;
 			node* cursor = (record[recordNum].getLockList())->getHead();
 			bool allRead = true;
 			while(cursor != NULL) {
+				cout << "rwlock while2" << endl;
 				if(isSameNode(cursor, targetTempNode)) {
 					break;
 				}
