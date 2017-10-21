@@ -8,16 +8,21 @@
 #include "headers/thread.h"
 using namespace std;
 
+extern int n;
+extern int r;
+extern int e;
+extern int globalExcutionOrder;
+
 int main(int argc, char* argv[]) {
 	if(argc != 4) {
 		printf("command : ./run N R E\n");
 		exit(1);
 	}
 
-	extern int n = atoi(argv[1]);
-	extern int r = atoi(argv[2]);
-	extern int e = atoi(argv[3]);
-	extern int globalExcutionOrder = 0;
+	n = atoi(argv[1]);
+	r = atoi(argv[2]);
+	e = atoi(argv[3]);
+	globalExcutionOrder = 0;
 
 	pthread_t* threads;
 
