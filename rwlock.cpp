@@ -49,7 +49,9 @@ void rwLock(int recordNum, long threadNum, bool isWrite) {
 	cout << "rwlock end" << endl;
 
 	delete targetTempNode;
-	delete headNode;
+	//delete headNode;
+
+	cout << "rwlock after delete" << endl;
 }
 
 void rwUnlock(int recordNum, long threadNum, bool isWrite) {
