@@ -79,6 +79,7 @@ void LinkedList::delNodeFromHead(void) {
 		head = head->next;
 		head->pre = NULL;
 	} else {
+		cout << "delete node" << endl;
 		head = NULL;
 	}
 }
