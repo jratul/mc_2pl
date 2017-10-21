@@ -14,8 +14,7 @@ int* getRandomNumbers(int* randomNumbers, int maxRecordNum) {
 
 			bool isDuplicate = false;
 
-			for(int j=0;j<CHOOSING_THREAD_NUM;j++) {
-				if(i==j) continue;
+			for(int j=0;j<i;j++) {
 				if(randomNumbers[i] == randomNumbers[j]) {
 					cout << randomNumbers[i] << " ? " << randomNumbers[j] << endl;
 					isDuplicate = true;
