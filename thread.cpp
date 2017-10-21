@@ -1,8 +1,8 @@
 #include "headers/util.h"
-
+#include "headers/thread.h"
 
 void* threadFunction(void* arg) {
-	threadParam* tp = (threadParam*)arg;
+	threadParam * tp = (threadParam*)arg;
 	long tid = tp->threadNum;
 	int maxRecordNum = tp->maxRecordNum;
 
