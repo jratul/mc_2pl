@@ -47,6 +47,9 @@ void* threadFunction(void* arg) {
 		k = record[randomNumbers[2]].getRecordVal() - i;
 
 		pthread_mutex_lock(&globalMutex);
+		record[randomNumbers[0]].setRecordVal(i);
+		record[randomNumbers[1]].setRecordVal(j);
+		record[randomNumbers[2]].setRecordVal(k);
 		rwUnlock(randomNumbers[0], tid, false);
 		rwUnlock(randomNumbers[1], tid, true);
 		rwUnlock(randomNumbers[2], tid, true);
