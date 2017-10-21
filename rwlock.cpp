@@ -67,6 +67,6 @@ void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 	}
 
 	delete targetTempNode;
-	delete headNode;
+	//delete headNode;
 }
 
