@@ -4,6 +4,7 @@ bool isSameNode(node* node1, node* node2) {
 	if((node1->threadNum == node2->threadNum) && (node1->isWrite == node2->isWrite)) {
 		return true;
 	} else {
+		cout << "return false" << endl;
 		return false;
 	}
 }
