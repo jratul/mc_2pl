@@ -8,13 +8,11 @@
 #include "headers/thread.h"
 using namespace std;
 
-/*
-int n;
-int r;
-int e;
-int globalExcutionOrder;
-pthread_mutex_t globalMutex;
-*/
+int n = 0;
+int r = 0;
+int e = 0;
+int globalExcutionOrder = 0;
+pthread_mutex_t globalMutex = PTHREAD_MUTEX_INITIALIZER;
 
 int main(int argc, char* argv[]) {
 	if(argc != 4) {
@@ -28,7 +26,6 @@ int main(int argc, char* argv[]) {
 	globalExecutionOrder = 0;
 
 	pthread_t* threads;
-	globalMutex = PTHREAD_MUTEX_INITIALIZER;
 
 /*
 	LinkedList* lockTableList = new LinkedList[n];
