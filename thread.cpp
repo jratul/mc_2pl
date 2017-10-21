@@ -2,6 +2,11 @@
 #include "headers/thread.h"
 #include "headers/rwlock.h"
 
+int n;
+int r;
+int e;
+int globalExcutionOrder;
+
 void* threadFunction(void* arg) {
 	threadParam * tp = (threadParam*)arg;
 	long tid = tp->threadNum;

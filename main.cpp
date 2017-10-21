@@ -8,10 +8,10 @@
 #include "headers/thread.h"
 using namespace std;
 
-extern int n;
-extern int r;
-extern int e;
-extern int globalExcutionOrder;
+int n;
+int r;
+int e;
+int globalExcutionOrder;
 
 int main(int argc, char* argv[]) {
 	if(argc != 4) {
