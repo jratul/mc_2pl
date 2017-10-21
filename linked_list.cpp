@@ -75,7 +75,7 @@ void LinkedList::addNodeToTail(node *newNode) {
 		cout << "if head null" << endl;
 		head = newNode;
 	}
-	cout << "addNodeToTail End" << newNode->threadNum <<  endl;
+	cout << "addNodeToTail End " << newNode->threadNum <<  endl;
 }
 
 void LinkedList::delNodeFromHead(void) {
