@@ -11,7 +11,7 @@ using namespace std;
 int n = 0;
 int r = 0;
 int e = 0;
-int globalExcutionOrder = 0;
+int globalExecutionOrder = 0;
 pthread_mutex_t globalMutex = PTHREAD_MUTEX_INITIALIZER;
 Record* record;
 
