@@ -55,12 +55,12 @@ int main(int argc, char* argv[]) {
 	threadParam tp;
 	tp.threadNum = 0;
 	tp.maxRecordNum = r;
-	if(pthread_create(&threads[i], 0, threadFunction, (void*)tp) < 0) {
+	if(pthread_create(&threads, 0, threadFunction, (void*)tp) < 0) {
 		printf("pthread_create error!\n");
 		return 0;
 	}
 
-	pthread_join(threads[i],NULL);
+	pthread_join(threads,NULL);
 	delete threads;
 
 
