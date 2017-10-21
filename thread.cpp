@@ -44,7 +44,9 @@ void* threadFunction(void* arg) {
 		record[randomNumbers[1]].pushBackLockList(&newNode[1]);
 		rwLock(randomNumbers[1], tid, true);
 		pthread_mutex_unlock(&globalMutex);
+		logLine("before assign j");
 		j = i + record[randomNumbers[1]].getRecordVal();
+		logLIne("after assign j");
 		logLine("after second");
 
 		logLine("before third");
