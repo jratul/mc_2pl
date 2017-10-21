@@ -13,6 +13,7 @@ int r = 0;
 int e = 0;
 int globalExcutionOrder = 0;
 pthread_mutex_t globalMutex = PTHREAD_MUTEX_INITIALIZER;
+Record* record;
 
 int main(int argc, char* argv[]) {
 	if(argc != 4) {
