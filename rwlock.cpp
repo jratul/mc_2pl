@@ -16,8 +16,10 @@ void rwLock(int recordNum, long threadNum, bool isWrite) {
 	targetTempNode->isWrite = isWrite;
 
 	node* cursor = (record[recordNum].getLockList())->getHead();
-	while(cursor != NULL) {
+	int cnt =0;
+	while(cursor != NULL && cnt < 10) {
 		cout << "cursor : (" << cursor->threadNum << ", " << cursor->isWrite << ")" << endl;
+		cnt++;
 		cursor = cursor->next;
 	}
 
