@@ -29,48 +29,34 @@ void* threadFunction(void* arg) {
 			cout << randomNumbers[idx] << endl;
 		}
 
-		logLine("before first");
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[0], tid, false);
 		record[randomNumbers[0]].pushBackLockList(&newNode[0]);
 		rwLock(randomNumbers[0], tid, false);
 		pthread_mutex_unlock(&globalMutex);
 		i = record[randomNumbers[0]].getRecordVal();
-		logLine("after first");
 
-		logLine("before second");
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[1], tid, true);
 		record[randomNumbers[1]].pushBackLockList(&newNode[1]);
-		logLine("before rw lock");
 		rwLock(randomNumbers[1], tid, true);
-		logLine("after rw lock");
 		pthread_mutex_unlock(&globalMutex);
-		logLine("before assign j");
 		j = i + record[randomNumbers[1]].getRecordVal();
-		logLine("after assign j");
-		logLine("after second");
 
-		logLine("before third");
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[2], tid, true);
 		record[randomNumbers[2]].pushBackLockList(&newNode[2]);
 		rwLock(randomNumbers[2], tid, true);
 		pthread_mutex_unlock(&globalMutex);
 		k = record[randomNumbers[2]].getRecordVal() - i;
-		logLine("after third");
 
-		logLine("before final");
 		pthread_mutex_lock(&globalMutex);
-		logLine("after mutex");
 		rwUnlock(randomNumbers[0], tid, false);
 		rwUnlock(randomNumbers[1], tid, true);
 		rwUnlock(randomNumbers[2], tid, true);
-		logLine("after un rwlock");
 		globalExecutionOrder++;
 		printCommitLog(globalExecutionOrder, randomNumbers, i, j, k);
 		pthread_mutex_unlock(&globalMutex);
-		logLine("after final");
 
 		delete [] randomNumbers;
 		delete [] newNode;

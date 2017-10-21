@@ -7,7 +7,6 @@ void createNewNode(node* newNode, int threadNum, bool isWrite) {
 	newNode->isWrite = isWrite;
 	newNode->next = NULL;
 	newNode->pre = NULL;
-	cout << "complete creation" << endl;
 }
 
 LinkedList::LinkedList() {
@@ -59,23 +58,17 @@ void LinkedList::addNodeToHead(node *newNode) {
 }
 
 void LinkedList::addNodeToTail(node *newNode) {
-	cout << "addNodeToTail Start " << newNode->threadNum << endl;
 	if(tail != NULL) {
-		cout << "tail null if" << endl;
 		tail->next = newNode;
 		newNode->pre = tail;
 	} else {
-		cout << "else" << endl;
 		cursor = newNode;
 	}
-	cout << "after if-else" << endl;
 	tail = newNode;
 
 	if(head == NULL) {
-		cout << "if head null" << endl;
 		head = newNode;
 	}
-	cout << "addNodeToTail End " << newNode->threadNum <<  endl;
 }
 
 void LinkedList::delNodeFromHead(void) {
