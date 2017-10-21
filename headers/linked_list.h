@@ -27,6 +27,7 @@ public:
 	void setHead(node *head);
 	void setTail(node *tail);
 	void moveCursorToNext(void);
+	void LinkedList::moveCursorToPre(void);
 
 	void addNodeToHead(node *newNode);
 	void addNodeToTail(node *newNode);
