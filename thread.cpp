@@ -29,6 +29,10 @@ void* threadFunction(void* arg) {
 
 		randomNumbers = getRandomNumbers(randomNumbers, maxRecordNum);
 
+		for(int idx=0;idx<CHOOSING_THREAD_NUM;idx++) {
+			cout << randomNumbers[idx] << endl;
+		}
+
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[0], tid, false);
 		record[randomNumbers[0]].pushBackLockList(&newNode[0]);
