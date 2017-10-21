@@ -6,7 +6,7 @@
 #	g++ -c linked_list.cpp
 
 run : main.o record.o linked_list.o util.o thread.o rwlock.o
-	g++ -o run util.o main.o record.o linked_list.o  thread.o rwlock.o -g -lpthread
+	g++ -o run main.o record.o linked_list.o thread.o rwlock.o util.o -g -lpthread
 
 main.o : headers/record.h headers/thread.h headers/util.h main.cpp
 	g++ -c main.cpp
