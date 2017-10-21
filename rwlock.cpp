@@ -1,6 +1,8 @@
 #include "headers/rwlock.h"
 
 bool isSameNode(node* node1, node* node2) {
+	cout << "isSameNode : " << node1->threadNum << " " << node2->threadNum;
+	cout << "isSameNode : " << node1->isWrite << ", " << node2->isWrite;
 	if((node1->threadNum == node2->threadNum) && (node1->isWrite == node2->isWrite)) {
 		return true;
 	} else {
