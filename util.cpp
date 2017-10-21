@@ -18,6 +18,7 @@ int* getRandomNumbers(int* randomNumbers, int maxRecordNum) {
 				if(randomNumbers[i] == randomNumbers[j]) {
 					cout << i << " : " << randomNumbers[i] << " ? " << j << " : " << randomNumbers[j] << endl;
 					isDuplicate = true;
+					break;
 				}
 			}
 
