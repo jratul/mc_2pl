@@ -14,10 +14,10 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 
-	n = atoi(argv[1]);
-	r = atoi(argv[2]);
-	e = atoi(argv[3]);
-	globalExcutionOrder = 0;
+	extern int n = atoi(argv[1]);
+	extern int r = atoi(argv[2]);
+	extern int e = atoi(argv[3]);
+	extern int globalExcutionOrder = 0;
 
 	pthread_t* threads;
 
