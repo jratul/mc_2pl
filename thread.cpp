@@ -2,10 +2,12 @@
 #include "headers/thread.h"
 #include "headers/rwlock.h"
 
+/*
 int n;
 int r;
 int e;
 int globalExecutionOrder;
+*/
 
 void* threadFunction(void* arg) {
 	threadParam * tp = (threadParam*)arg;
