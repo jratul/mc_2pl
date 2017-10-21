@@ -11,7 +11,7 @@ int* getRandomNumbers(int* randomNumbers, int maxRecordNum) {
 
 	for(int i=0;i<CHOOSING_THREAD_NUM;i++) {
 		while(true) {
-			randomNumbers[i] = rand()%maxRecordNum + 1;
+			randomNumbers[i] = rand()%maxRecordNum;
 
 			bool isDuplicate = false;
 
