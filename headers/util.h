@@ -3,6 +3,7 @@
 #include<iostream>
 #include<string>
 #include<pthread.h>
+#include "record.h"
 #define CHOOSING_THREAD_NUM 3
 using namespace std;
 
