@@ -1,6 +1,6 @@
-#define RWLOCK
 #ifndef RWLOCK
-#include "headers/util"
+#define RWLOCK
+#include "util.h"
 
 bool isSameNode(node* node1, node* node2);
 void rwLock(int recordNum, int threadNum, bool isWrite);
