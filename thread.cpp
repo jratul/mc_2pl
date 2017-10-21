@@ -64,8 +64,8 @@ void* threadFunction(void* arg) {
 		pthread_mutex_lock(&globalMutex);
 		logLine("after mutex");
 		rwUnlock(randomNumbers[0], tid, false);
-		rwUnlock(randomNumbers[1], tid, false);
-		rwUnlock(randomNumbers[2], tid, false);
+		rwUnlock(randomNumbers[1], tid, true);
+		rwUnlock(randomNumbers[2], tid, true);
 		logLine("after un rwlock");
 		globalExecutionOrder++;
 		printCommitLog(globalExecutionOrder, randomNumbers, i, j, k);
