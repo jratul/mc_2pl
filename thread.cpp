@@ -32,32 +32,32 @@ void* threadFunction(void* arg) {
 		logLine("before first");
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[0], tid, false);
-		record[randomNumbers[0]].pushBackLockList(&newNode[0]);
+		record[randomNumbers[0]-1].pushBackLockList(&newNode[0]);
 		rwLock(randomNumbers[0], tid, false);
 		pthread_mutex_unlock(&globalMutex);
-		i = record[randomNumbers[0]].getRecordVal();
+		i = record[randomNumbers[0]-1].getRecordVal();
 		logLine("after first");
 
 		logLine("before second");
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[1], tid, true);
-		record[randomNumbers[1]].pushBackLockList(&newNode[1]);
+		record[randomNumbers[1]-1].pushBackLockList(&newNode[1]);
 		logLine("before rw lock");
 		rwLock(randomNumbers[1], tid, true);
 		logLine("after rw lock");
 		pthread_mutex_unlock(&globalMutex);
 		logLine("before assign j");
-		j = i + record[randomNumbers[1]].getRecordVal();
+		j = i + record[randomNumbers[1]-1].getRecordVal();
 		logLine("after assign j");
 		logLine("after second");
 
 		logLine("before third");
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[2], tid, true);
-		record[randomNumbers[2]].pushBackLockList(&newNode[2]);
+		record[randomNumbers[2]-1].pushBackLockList(&newNode[2]);
 		rwLock(randomNumbers[2], tid, true);
 		pthread_mutex_unlock(&globalMutex);
-		k = record[randomNumbers[2]].getRecordVal() - i;
+		k = record[randomNumbers[2]-1].getRecordVal() - i;
 		logLine("after third");
 
 		logLine("before final");
