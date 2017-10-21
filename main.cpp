@@ -25,7 +25,7 @@ int main(int argc, char* argv[]) {
 	n = atoi(argv[1]);
 	r = atoi(argv[2]);
 	e = atoi(argv[3]);
-	globalExcutionOrder = 0;
+	globalExecutionOrder = 0;
 
 	pthread_t* threads;
 	globalMutex = PTHREAD_MUTEX_INITIALIZER;
