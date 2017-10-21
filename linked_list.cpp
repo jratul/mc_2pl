@@ -38,6 +38,12 @@ void LinkedList::moveCursorToNext(void) {
 	}
 }
 
+void LinkedList::moveCursorToPre(void) {
+	if(cursor != NULL && cursor->pre != NULL) {
+		cursor = cursor->pre;
+	}
+}
+
 void LinkedList::addNodeToHead(node *newNode) {
 	if(head != NULL) {
 		newNode->next = head;
@@ -46,6 +52,10 @@ void LinkedList::addNodeToHead(node *newNode) {
 		cursor = newNode;
 	}
 	head = newNode;
+
+	if(tail == NULL) {
+		tail = newNode;
+	}
 }
 
 void LinkedList::addNodeToTail(node *newNode) {
@@ -56,6 +66,10 @@ void LinkedList::addNodeToTail(node *newNode) {
 		cursor = newNode;
 	}
 	tail = newNode;
+
+	if(head == NULL) {
+		head = newNode;
+	}
 }
 
 void LinkedList::delNodeFromHead(void) {

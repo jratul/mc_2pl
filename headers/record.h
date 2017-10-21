@@ -1,6 +1,7 @@
 #ifndef RECORD
 #define RECORD
 #include<list>
+#include<iostream>
 #include"linked_list.h"
 using namespace std;
 
@@ -23,7 +24,7 @@ class Record {
 private:
 	int recordId;
 	long recordVal;
-	LinkedList lockList;
+	LinkedList* lockList;
 public:
 	void initRecord(int recordId, long recordVal);
 

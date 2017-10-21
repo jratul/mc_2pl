@@ -2,14 +2,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<list>
+#include<pthread.h>
 #include "headers/record.h"
 #include "headers/util.h"
+#include "headers/thread.h"
 using namespace std;
-
-int n;
-int r;
-int e;
-int globalExcutionOrder;
 
 int main(int argc, char* argv[]) {
 	if(argc != 4) {
@@ -21,6 +18,8 @@ int main(int argc, char* argv[]) {
 	r = atoi(argv[2]);
 	e = atoi(argv[3]);
 	globalExcutionOrder = 0;
+
+	pthread_t* threads;
 
 /*
 	LinkedList* lockTableList = new LinkedList[n];
@@ -34,19 +33,35 @@ int main(int argc, char* argv[]) {
 
 	printf("node thread id : %d\n", (lockTableList[0].getHead())->threadNum);*/
 
+/*
 	Record* record = new Record[r];
 	for(int i=0;i<r;i++) {
 		record[i].initRecord(i, 100);
 	}
-	logLine("before push back");
 	node* newNode = new node;
 	createNewNode(newNode, 0, true);
 	record[0].pushBackLockList(newNode);
-	logLine("after push back");
 
 	LinkedList* ll = record[0].getLockList();
-	logLine("get lock list");
-	cout << ll->getHead()->threadNum;
+	cout << (ll->getHead())->threadNum;
+*/
+
+	record = new Record[r];
+	for(int i=0;i<r;i++) {
+		record[i].initRecord(i, 100);
+	}
+
+	threads = new pthread_t;
+	threadParam tp;
+	tp.threadNum = 0;
+	tp.maxRecordNum = r;
+	if(pthread_create(&threads[i], 0, threadFunction, (void*)tp) < 0) {
+		printf("pthread_create error!\n");
+		return 0;
+	}
+
+	pthread_join(threads[i],NULL);
+	delete threads;
 
 
 	return 0;
