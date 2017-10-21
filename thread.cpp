@@ -1,3 +1,7 @@
+#include "headers/util.h"
+#include "headers/thread.h"
+#include "headers/rwlock.h"
+
 void* threadFunction(void* arg) {
 	threadParam * tp = (threadParam*)arg;
 	long tid = tp->threadNum;
