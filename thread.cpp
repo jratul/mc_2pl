@@ -45,6 +45,10 @@ void* threadFunction(void* arg) {
 		record[randomNumbers[1]].pushBackLockList(&newNode[1]);
 		printLockList(randomNumbers[1], tid, true);
 		cout << "thread " << tid << " second end" << endl;
+		if(checkCycle(1, randomNumbers, tid)) {
+			pthread_mutex_unlock(&globalMutex);
+			continue;
+		}
 		pthread_mutex_unlock(&globalMutex);
 		rwLock(randomNumbers[1], tid, true);
 		
@@ -62,6 +66,10 @@ void* threadFunction(void* arg) {
 		record[randomNumbers[2]].pushBackLockList(&newNode[2]);
 		printLockList(randomNumbers[1], tid, true);
 		cout << "thread " << tid << " third end" << endl;
+		if(checkCycle(2, randomNumbers, tid)) {
+			pthread_mutex_unlock(&globalMutex);
+			continue;
+		}
 		pthread_mutex_unlock(&globalMutex);
 		rwLock(randomNumbers[2], tid, true);
 		//pthread_mutex_unlock(&globalMutex);	
@@ -101,3 +109,32 @@ void* threadFunction(void* arg) {
 
 	return NULL;
 }
+
+bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
+	node* cursor = (record[randomNumbers[recordNumIdx]].getLockList())->getTail();
+	node* head = (record[randomNumbers[recordNumIdx]].getLockList())->getHead();
+	
+	long long headTid = head->threadNum;
+
+	int checkIdx = recordNumIdx - 1;
+
+	while(checkIdx >= 0) {
+		if((record[randomNumbers[checkIdx]].getLockList())->getTail()->threadNum == headTid) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+
+
+
+
+
+
+
+
+
+
+
