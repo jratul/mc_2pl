@@ -129,9 +129,9 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 
 	for(int i=0;i<r;i++) {
 		if((record[r].getLockList())->getTail() != NULL){
-			node* cursor = (record[randomNumbers[recordNumIdx]].getLockList())->getTail();
+			node* cursor = (record[i].getLockList())->getHead();
 			set<long> tidRecord;
-			tidRecord.insert(cursor->threadNum);
+			tidRecord.insert((record[i].getLockList())->getTail()->threadNum);
 			if(checkProcess(cursor, cursor->threadNum, tidRecord)) {
 				return true;
 			}
