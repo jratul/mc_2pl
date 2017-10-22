@@ -127,7 +127,7 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 }
 
 bool checkProcess(node* cursor, long targetThreadNum, set<long> tidRecord) {
-
+	cout << "checkProcess for " << targetThreadNum << endl;
 	while(cursor->pre != NULL) {
 		cursor = cursor->pre;
 
