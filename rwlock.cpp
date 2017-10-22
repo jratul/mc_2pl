@@ -56,7 +56,7 @@ bool rwLock(int recordNum, long threadNum, bool isWrite) {
 	return true;
 }
 
-void rwUnlock(int recordNum, long threadNum, bool isWrite) {
+bool rwUnlock(int recordNum, long threadNum, bool isWrite) {
 	node* headNode = (record[recordNum].getLockList())->getHead();
 	node* targetTempNode = new node;
 	targetTempNode->threadNum = threadNum;
