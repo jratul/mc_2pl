@@ -181,6 +181,7 @@ bool checkProcess(node* cursor, long targetThreadNum, set<long> tidRecord) {
 
 		set<long>::iterator iter;
 		for(iter = tidRecord.begin(); iter!= tidRecord.end(); iter++) {
+			cout << "tidRecord : " << *iter;
 			if(*iter == cursor->threadNum) {
 				return true;
 			}
@@ -195,7 +196,6 @@ bool checkProcess(node* cursor, long targetThreadNum, set<long> tidRecord) {
 			}
 		}
 	}
-
 
 	return false;
 }
