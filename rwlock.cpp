@@ -90,7 +90,18 @@ void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 		cnt++;
 	}
 
-	(record[recordNum].getLockList())->delNodeFromHead();
+	if(allRead) {
+		node* cursor = (record[recordNum].getLockList())->getHead();
+		while(cursor != NULL) {
+			if(isSameNode(cursor, targetTempNode)) {
+				(record[recordNum].getLockList())->delNodeFromCursor(cursor);
+				break;
+			}
+			cursor = cursor->next;
+		}
+	} else {
+		(record[recordNum].getLockList())->delNodeFromHead();
+	}
 
 	delete targetTempNode;
 }
