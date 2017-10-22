@@ -167,7 +167,7 @@ void delNodeForce(long threadNum) {
 			smallestTid = i;
 		}
 	}
-	cout << "smallTid : " << smallTid << endl;
+	cout << "smallestTid : " << smallestTid << endl;
 
 	for(int i=0;i<r;i++) {
 		if((record[i].getLockList())->getHead() != NULL) {
