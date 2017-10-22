@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
+#include <fstream>
 #include "headers/util.h"
 
 void logLine(string logData) {
@@ -31,6 +32,12 @@ int* getRandomNumbers(int* randomNumbers, int maxRecordNum) {
 	return randomNumbers;
 }
 
-void printCommitLog(int commitId, int* idx, long valI, long valJ, long valK) {
+void printCommitLog(int commitId, int* idx, long valI, long valJ, long valK, long threadNum) {
 	cout << commitId << " " << idx[0]+1 << " " << idx[1]+1 << " " << idx[2]+1 << " " << valI << " " << valJ << " " << valK << endl;
+	string fileName = "thread.txt";
+	fileName.insert(6, to_string(threadNum + 1));
+
+	ofstream output(fileName, ios::app);
+	output << commitId << " " << idx[0]+1 << " " << idx[1]+1 << " " << idx[2]+1 << " " << valI << " " << valJ << " " << valK << endl;
+	output.close();
 }

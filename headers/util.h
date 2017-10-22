@@ -16,6 +16,6 @@ extern Record* record;
 
 void logLine(string logData);
 int* getRandomNumbers(int* randomNumbers, int maxRecordNum);
-void printCommitLog(int commitId, int* idx, long valI, long valJ, long valK);
+void printCommitLog(int commitId, int* idx, long valI, long valJ, long valK, long threadNum);
 
 #endif

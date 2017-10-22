@@ -1,17 +1,4 @@
-/*
-#include "headers/util.h"
 #include "headers/thread.h"
-#include "headers/rwlock.h"
-*/
-#include "headers/thread.h"
-
-/*
-int n;
-int r;
-int e;
-int globalExecutionOrder;
-*/
-//int globalExecutionOrder;
 
 void* threadFunction(void* arg) {
 	threadParam * tp = (threadParam*)arg;
@@ -68,9 +55,9 @@ void* threadFunction(void* arg) {
 			record[randomNumbers[1]].setRecordVal(jTemp);
 			record[randomNumbers[2]].setRecordVal(kTemp);
 		} else {
-			printCommitLog(globalExecutionOrder, randomNumbers, i, j, k);
+			printCommitLog(globalExecutionOrder, randomNumbers, i, j, k, tid);
 		}
-		
+
 		pthread_mutex_unlock(&globalMutex);
 
 		delete [] randomNumbers;
