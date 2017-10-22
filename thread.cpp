@@ -1,4 +1,5 @@
 #include <fstream>
+#include <set>
 #include "headers/thread.h"
 #include "headers/linked_list.h"
 using namespace std;
@@ -148,10 +149,13 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 	}
 	*/
 
-	return checkProcess(head, threadNum);
+	set<long> tidRecord;
+	tidRecord.insert(threadNum);
+	return checkProcess(cursor, threadNum, tidRecord);
 }
 
-bool checkProcess(node* cursor, long targetThreadNum) {
+bool checkProcess(node* cursor, long targetThreadNum, set<long> tidRecord) {
+	/*
 	cout << "checkprocess" << endl;
 	for(int i=0;i<r;i++) {
 		cout << "for " << i << endl;
@@ -171,6 +175,26 @@ bool checkProcess(node* cursor, long targetThreadNum) {
 			}
 		}
 	}
+	*/
+
+	while(cursor->pre != NULL) {
+		cursor = cursor->pre;
+		pair<set<int>::iterator, bool> pr;
+		pr = tidRecord.insert(cursor->threadNum);
+
+		if(pr.second != true) {
+			return true;
+		}
+	}
+
+	for(int i=0;i<r;i++) {
+		if((record[r].getLockList())->getTail() != NULL) {
+			if((record[r].getLockList())->getTail()->threadNum == cursor->threadNum) {
+				checkProcess(cursor, targetThreadNum, tidRecord);
+			}
+		}
+	}
+
 
 	return false;
 }

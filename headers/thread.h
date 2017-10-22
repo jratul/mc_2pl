@@ -13,5 +13,5 @@ void* threadFunction(void* arg);
 bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum);
 void delAllNodeFromThread(int* randomNumbers, long threadNum);
 bool isFromSameThread(node* node1, node* node2);
-bool checkProcess(node* cursor, long targetThreadNum);
+bool checkProcess(node* cursor, long targetThreadNum, set<long> tidRecord);
 #endif
