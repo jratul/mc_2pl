@@ -69,8 +69,8 @@ void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 void printLockList() {
 	cout << endl;
 	for(int i=0;i<r;i++) {
-		if(!record[i].getLockList()->getHead()) {
-			node* cursor = record[i].getLockList()->getHead();
+		if((record[i].getLockList())->getHead() != NULL) {
+			node* cursor = (record[i].getLockList())->getHead();
 			cout << "record[" << i << "] : ";
 			while(cursor != NULL) {
 				cout << "(" << cursor->threadNum << ", " << cursor->isWrite << ")";
