@@ -33,7 +33,7 @@ public:
 	void addNodeToTail(node *newNode);
 	void delNodeFromHead(void);
 	void delNodeFromTail(void);
-	void delNodeFromCursor(node *targetNode)
+	void delNodeFromCursor(node *targetNode);
 };
 
 
