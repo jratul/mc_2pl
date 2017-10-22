@@ -117,14 +117,20 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 	node* cursor = (record[randomNumbers[recordNumIdx]].getLockList())->getTail();
 	node* head = (record[randomNumbers[recordNumIdx]].getLockList())->getHead();
 	
-	long long headTid = head->threadNum;
+	long headTid = head->threadNum;
 
 	int checkIdx = recordNumIdx - 1;
 
 	while(checkIdx >= 0) {
-		if((record[randomNumbers[checkIdx]].getLockList())->getTail()->threadNum == headTid && 
-			(record[randomNumbers[checkIdx]].getLockList())->getHead()->threadNum != headTid) {
-			return true;
+		if((record[randomNumbers[checkIdx]].getLockList())->getTail()->threadNum == headTid) {
+			node* newCursor = (record[randomNumbers[checkIdx]].getLockList())->getTail();
+			newCursor = newCursor->pre;
+			while(newCursor != NULL) {
+				if(newCursor->threadNum == threadNum) {
+					return true;
+				}
+				newCursor = newCursor->pre;
+			}
 		}
 		checkIdx--;
 	}
