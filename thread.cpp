@@ -8,7 +8,7 @@ void* threadFunction(void* arg) {
 	int maxRecordNum = tp->maxRecordNum;
 
 	string fileName = "thread.txt";
-	fileName.insert(6, to_string(threadNum + 1));
+	fileName.insert(6, to_string(tid + 1));
 	ofstream output(fileName);
 	output.close();
 
