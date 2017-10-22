@@ -136,7 +136,7 @@ void delAllNodeFromThread(int* randomNumbers, long threadNum) {
 
 		while(cursor != NULL) {
 			if(cursor->threadNum == threadNum) {
-				delNodeFromCursor(cursor);
+				(record[randomNumbers[i]].getLockList())->delNodeFromCursor(cursor);
 				break;
 			}
 			cursor = cursor->next;
