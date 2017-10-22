@@ -17,7 +17,7 @@ Record* record;
 
 int main(int argc, char* argv[]) {
 	srand((unsigned)time(NULL));
-	
+
 	if(argc != 4) {
 		printf("command : ./run N R E\n");
 		exit(1);
@@ -60,17 +60,21 @@ int main(int argc, char* argv[]) {
 		record[i].initRecord(i, 100);
 	}
 
-	threads = new pthread_t[1];
+	threads = new pthread_t[n];
 	threadParam tp;
 	tp.threadNum = 0;
 	tp.maxRecordNum = r;
-	if(pthread_create(&threads[0], 0, threadFunction, (void*)&tp) < 0) {
-		printf("pthread_create error!\n");
-		return 0;
+	for(int i=0;i<n;i++) {
+		if(pthread_create(&threads[i], 0, threadFunction, (void*)&tp) < 0) {
+			printf("pthread_create error!\n");
+			return 0;
+		}
 	}
 
-	pthread_join(threads[0],NULL);
-	delete threads;
+	for(int i=0;i<n;i++) {
+		pthread_join(threads[i],NULL);
+	}
+	delete [] threads;
 
 
 	return 0;
