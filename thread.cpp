@@ -52,9 +52,11 @@ void* threadFunction(void* arg) {
 		record[randomNumbers[0]].setRecordVal(i);
 		record[randomNumbers[1]].setRecordVal(j);
 		record[randomNumbers[2]].setRecordVal(k);
+		pthread_mutex_unlock(&globalMutex);
 		rwUnlock(randomNumbers[0], tid, false);
 		rwUnlock(randomNumbers[1], tid, true);
 		rwUnlock(randomNumbers[2], tid, true);
+		pthread_mutex_lock(&globalMutex);
 		globalExecutionOrder++;
 
 		if(globalExecutionOrder > e) {
