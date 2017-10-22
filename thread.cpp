@@ -14,8 +14,8 @@ void* threadFunction(void* arg) {
 
 	while(globalExecutionOrder < e) {
 		int* randomNumbers = new int[CHOOSING_THREAD_NUM];
-		long i,j,k;
-		long iTemp, jTemp, kTemp;
+		long long i,j,k;
+		long long iTemp, jTemp, kTemp;
 		node* newNode = new node[CHOOSING_THREAD_NUM];
 
 		for(int idx=0;idx<CHOOSING_THREAD_NUM;idx++) {

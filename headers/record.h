@@ -23,16 +23,16 @@ public:
 class Record {
 private:
 	int recordId;
-	long recordVal;
+	long long recordVal;
 	LinkedList* lockList;
 public:
-	void initRecord(int recordId, long recordVal);
+	void initRecord(int recordId, long long recordVal);
 
 	int getRecordId(void);
-	long getRecordVal(void);
+	long long getRecordVal(void);
 	LinkedList* getLockList(void);
 	void setRecordId(int recordId);
-	void setRecordVal(long recordVal);
+	void setRecordVal(long long recordVal);
 	void pushBackLockList(node* newNode);
 
 };

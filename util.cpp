@@ -19,7 +19,6 @@ int* getRandomNumbers(int* randomNumbers, int maxRecordNum) {
 
 			for(int j=0;j<i;j++) {
 				if(randomNumbers[i] == randomNumbers[j]) {
-					//cout << i << " : " << randomNumbers[i] << " ? " << j << " : " << randomNumbers[j] << endl;
 					isDuplicate = true;
 					break;
 				}
@@ -34,7 +33,7 @@ int* getRandomNumbers(int* randomNumbers, int maxRecordNum) {
 	return randomNumbers;
 }
 
-void printCommitLog(int commitId, int* idx, long valI, long valJ, long valK, long threadNum) {
+void printCommitLog(int commitId, int* idx, long long valI, long long valJ, long long valK, long threadNum) {
 	cout << commitId << " " << idx[0]+1 << " " << idx[1]+1 << " " << idx[2]+1 << " " << valI << " " << valJ << " " << valK << endl;
 	string fileName = "thread.txt";
 	fileName.insert(6, to_string(threadNum + 1));
