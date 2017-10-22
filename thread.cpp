@@ -134,7 +134,7 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 			node* cursor = (record[i].getLockList())->getHead();
 			set<long> tidRecord;
 			tidRecord.insert((record[i].getLockList())->getTail()->threadNum);
-			if(checkProcess(cursor, cursor->threadNum, tidRecord)) {
+			if(checkProcess(cursor, cursor->threadNum, tidRecord, i)) {
 				return true;
 			}
 		}
@@ -144,7 +144,7 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 	return false;
 }
 
-bool checkProcess(node* cursor, long targetThreadNum, set<long> tidRecord) {
+bool checkProcess(node* cursor, long targetThreadNum, set<long> tidRecord, long startRecordNum) {
 	cout << "checkProcess for " << targetThreadNum << endl;
 	while(cursor->pre != NULL) {
 		cursor = cursor->pre;
@@ -164,9 +164,8 @@ bool checkProcess(node* cursor, long targetThreadNum, set<long> tidRecord) {
 	}
 
 	for(int i=0;i<r;i++) {
-		cout << "in for" << endl;
+		if(i == startRecordNum) continue;
 		if((record[i].getLockList())->getTail() != NULL) {
-			cout << "in if 1" << endl;
 			if((record[i].getLockList())->getTail()->threadNum == cursor->threadNum &&
 				(record[i].getLockList())->getTail()->threadNum != (record[i].getLockList())->getHead()->threadNum) {
 				cout << "next thread num : " << cursor->threadNum << endl;
