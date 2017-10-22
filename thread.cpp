@@ -1,9 +1,16 @@
+#include <fstream>
 #include "headers/thread.h"
+using namespace std;
 
 void* threadFunction(void* arg) {
 	threadParam * tp = (threadParam*)arg;
 	long tid = tp->threadNum;
 	int maxRecordNum = tp->maxRecordNum;
+
+	string fileName = "thread.txt";
+	fileName.insert(6, to_string(threadNum + 1));
+	ofstream output(fileName);
+	output.close();
 
 	while(globalExecutionOrder < e) {
 		int* randomNumbers = new int[CHOOSING_THREAD_NUM];
