@@ -58,7 +58,7 @@ void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 	int cnt = 0;
 	while(true) {
 		if(cnt == 1000) {
-			cout << "rwunlock : " << headNode->threadNum << ", " << targetTempNode->threadNum << " // " << headNode->isWrite << ", " << targetTempNode->isWrite << endl;
+			cout << "rwunlock record[" << recordNum << "] : " << headNode->threadNum << ", " << targetTempNode->threadNum << " // " << headNode->isWrite << ", " << targetTempNode->isWrite << endl;
 			printLockList(recordNum,threadNum,isWrite);
 		}
 		if(isSameNode(headNode, targetTempNode)) {
