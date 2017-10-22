@@ -27,24 +27,24 @@ void* threadFunction(void* arg) {
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[0], tid, false);
 		record[randomNumbers[0]].pushBackLockList(&newNode[0]);
-		rwLock(randomNumbers[0], tid, false);
 		pthread_mutex_unlock(&globalMutex);
+		rwLock(randomNumbers[0], tid, false);
 		iTemp = record[randomNumbers[0]].getRecordVal();
 		i = iTemp;
 
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[1], tid, true);
 		record[randomNumbers[1]].pushBackLockList(&newNode[1]);
-		rwLock(randomNumbers[1], tid, true);
 		pthread_mutex_unlock(&globalMutex);
+		rwLock(randomNumbers[1], tid, true);
 		jTemp = record[randomNumbers[1]].getRecordVal();
 		j = jTemp + i + 1;
 
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[2], tid, true);
 		record[randomNumbers[2]].pushBackLockList(&newNode[2]);
-		rwLock(randomNumbers[2], tid, true);
 		pthread_mutex_unlock(&globalMutex);
+		rwLock(randomNumbers[2], tid, true);
 		kTemp = record[randomNumbers[2]].getRecordVal();
 		k = kTemp - i;
 

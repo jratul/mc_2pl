@@ -9,7 +9,6 @@ bool isSameNode(node* node1, node* node2) {
 }
 
 void rwLock(int recordNum, long threadNum, bool isWrite) {
-	pthread_mutex_unlock(&globalMutex);
 	node* headNode = (record[recordNum].getLockList())->getHead();
 	node* targetTempNode = new node;
 	targetTempNode->threadNum = threadNum;
@@ -47,8 +46,7 @@ void rwLock(int recordNum, long threadNum, bool isWrite) {
 		}
 		cnt++;
 	}
-
-	pthread_mutex_lock(&globalMutex);
+	
 	delete targetTempNode;
 }
 
