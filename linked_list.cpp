@@ -73,6 +73,7 @@ void LinkedList::addNodeToTail(node *newNode) {
 
 void LinkedList::delNodeFromHead(void) {
 	if(head->next != NULL) {
+		cout << "del node : next is not null" << endl;
 		if(cursor == head) {
 			cursor = head->next;
 		} 
