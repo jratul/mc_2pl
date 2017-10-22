@@ -139,11 +139,13 @@ void delNodeForce(long threadNum) {
 	long* threadArr = new long[n*CHOOSING_RECORD_NUM];
 	int cnt = 0;
 
+	cout << "delnodeforce 2" << endl;
 	for(int i=0;i<n*CHOOSING_RECORD_NUM;i++) {
 		recordArr[i] = -1;
 		threadArr[i] = -1;
 	}
 
+	cout << "delnodeforce 3" << endl;
 	for(int i=0;i<r;i++) {
 		if((record[i].getLockList())->getHead() != NULL) {
 			recordArr[cnt] = i;
@@ -151,12 +153,12 @@ void delNodeForce(long threadNum) {
 			cnt++;
 		}
 	}
-
+	cout << "delnodeforce 4" << endl;
 	int* nodeCnt = new int[n];
 	for(int i=0;i<n*CHOOSING_RECORD_NUM;i++) {
 		nodeCnt[threadArr[i]]++;
 	}
-
+	cout << "delnodeforce 5" << endl;
 	int smallest = -1;
 	long smallestTid = 0;
 	for(int i=0;i<n;i++) {
@@ -165,6 +167,7 @@ void delNodeForce(long threadNum) {
 			smallestTid = i;
 		}
 	}
+	cout << "smallTid : " << smallTid << endl;
 
 	for(int i=0;i<r;i++) {
 		if((record[i].getLockList())->getHead() != NULL) {
@@ -174,6 +177,10 @@ void delNodeForce(long threadNum) {
 			}
 		}
 	}
+
+	delete [] threadArr;
+	delete [] recordArr;
+
 }
 
 
