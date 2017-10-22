@@ -111,6 +111,7 @@ void* threadFunction(void* arg) {
 }
 
 bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
+	cout << "checkCycle " << threadNum << endl;
 	node* cursor = (record[randomNumbers[recordNumIdx]].getLockList())->getTail();
 	node* head = (record[randomNumbers[recordNumIdx]].getLockList())->getHead();
 	
@@ -129,6 +130,7 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 
 	for(int i=0;i<r;i++) {
 		if((record[r].getLockList())->getTail() != NULL){
+			cout << "find cycle" << endl;
 			node* cursor = (record[i].getLockList())->getHead();
 			set<long> tidRecord;
 			tidRecord.insert((record[i].getLockList())->getTail()->threadNum);
@@ -138,6 +140,7 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 		}
 	}
 
+	cout << "it's not cycle" << endl;
 	return false;
 }
 
