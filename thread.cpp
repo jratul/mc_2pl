@@ -122,7 +122,8 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 	int checkIdx = recordNumIdx - 1;
 
 	while(checkIdx >= 0) {
-		if((record[randomNumbers[checkIdx]].getLockList())->getTail()->threadNum == headTid) {
+		if((record[randomNumbers[checkIdx]].getLockList())->getTail()->threadNum == headTid && 
+			(record[randomNumbers[checkIdx]].getLockList())->getHead()->threadNum != headTid) {
 			return true;
 		}
 	}
