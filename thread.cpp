@@ -155,18 +155,20 @@ bool checkProcess(node* cursor, long targetThreadNum) {
 	cout << "checkprocess" << endl;
 	for(int i=0;i<r;i++) {
 		cout << "for " << i << endl;
-		if((record[r].getLockList())->getTail()->threadNum == cursor->threadNum) {
-			cout << "if " << i << endl;
-			node* newCursor = (record[r].getLockList())->getTail();
-			while(newCursor->pre != NULL) {
-				cout << "while " << endl;
-				newCursor = newCursor->pre;
-				if(newCursor->threadNum == targetThreadNum) {
-					cout << "if-if" <<endl;
-					return true;
+		if((record[r].getLockList())->getTail() !=NULL) {
+			if((record[r].getLockList())->getTail()->threadNum == cursor->threadNum) {
+				cout << "if " << i << endl;
+				node* newCursor = (record[r].getLockList())->getTail();
+				while(newCursor->pre != NULL) {
+					cout << "while " << endl;
+					newCursor = newCursor->pre;
+					if(newCursor->threadNum == targetThreadNum) {
+						cout << "if-if" <<endl;
+						return true;
+					}
 				}
+				checkProcess(newCursor, targetThreadNum);
 			}
-			checkProcess(newCursor, targetThreadNum);
 		}
 	}
 
