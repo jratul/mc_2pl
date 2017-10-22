@@ -11,4 +11,5 @@ struct threadParam {
 
 void* threadFunction(void* arg);
 bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum);
+void delAllNodeFromThread(int* randomNumbers, long threadNum);
 #endif
