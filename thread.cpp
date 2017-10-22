@@ -74,7 +74,6 @@ void* threadFunction(void* arg) {
 			continue;
 		}
 		//rwLock(randomNumbers[2], tid, true);
-		pthread_mutex_unlock(&globalMutex);
 		
 		pthread_mutex_unlock(&globalMutex);	
 		printLockList(randomNumbers[2], tid, true);
@@ -190,23 +189,27 @@ bool checkProcess(node* cursor, long targetThreadNum, set<long> tidRecord) {
 		for(iter = tidRecord.begin(); iter!= tidRecord.end(); iter++) {
 			cout << "tidRecord : " << *iter << endl;
 			if(*iter == cursor->threadNum) {
+				cout << "it's cycle" << endl;
 				return true;
 			}
 		}
 
 		cout << endl;
 		tidRecord.insert(cursor->threadNum);
+		cout << "insert " << cursor->threadNum;
 	}
 
 	for(int i=0;i<r;i++) {
 		if((record[r].getLockList())->getTail() != NULL) {
 			if((record[r].getLockList())->getTail()->threadNum == cursor->threadNum &&
 				(record[r].getLockList())->getTail()->threadNum != (record[r].getLockList())->getHead()->threadNum) {
+				cout << "next thread num : " << cursor->threadNum << endl;
 				checkProcess(cursor, targetThreadNum, tidRecord);
 			}
 		}
 	}
 
+	cout << "it's not cycle" << endl;
 	return false;
 }
 
