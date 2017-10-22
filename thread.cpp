@@ -60,8 +60,6 @@ void* threadFunction(void* arg) {
 		j = jTemp + i + 1;
 		
 		
-
-		
 		pthread_mutex_lock(&globalMutex);
 		cout << "thread " << tid << " third start" << endl;
 		createNewNode(&newNode[2], tid, true);
@@ -80,9 +78,6 @@ void* threadFunction(void* arg) {
 		
 		kTemp = record[randomNumbers[2]].getRecordVal();
 		k = kTemp - i;
-		
-		
-
 		
 		pthread_mutex_lock(&globalMutex);
 		cout << "thread " << tid << " last start" << endl;
@@ -118,8 +113,26 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 	node* head = (record[randomNumbers[recordNumIdx]].getLockList())->getHead();
 	
 	long headTid = head->threadNum;
-
 	int checkIdx = recordNumIdx - 1;
+
+	if(isFromSameThread(head,cursor)) {
+		return false;
+	}
+
+
+
+	/*
+	if(recordNumIdx == 1) {
+		if((record[0].getLockList())->getTail()->threadNum == headTid) {
+			return true;
+		}
+
+	} else if(recordNumIdx == 2) {
+		if((record[0].getLockList())->getTail()->threadNum == headTid) {
+
+		}
+	}
+
 
 	while(checkIdx >= 0) {
 		if((record[randomNumbers[checkIdx]].getLockList())->getTail()->threadNum == headTid) {
@@ -133,6 +146,24 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 			}
 		}
 		checkIdx--;
+	}
+	*/
+
+	return false;
+}
+
+bool checkProcess(node* cursor, long targetThreadNum) {
+	for(int i=0;i<r;i++) {
+		if((record[r].getLockList())->getTail()->threadNum == cursor->threadNum) {
+			node* newCursor = (record[r].getLockList())->getTail();
+			while(newCursor->pre != NULL) {
+				newCursor = newCursor->pre;
+				if(newCursor->threadNum == targetThreadNum) {
+					return true;
+				}
+			}
+			checkProcess(newCursor, targetThreadNum);
+		}
 	}
 
 	return false;
@@ -149,6 +180,14 @@ void delAllNodeFromThread(int* randomNumbers, long threadNum) {
 			}
 			cursor = cursor->next;
 		}
+	}
+}
+
+bool isFromSameThread(node* node1, node* node2) {
+	if(node1->threadNum == node2->threadNum) {
+		return true;
+	} else {
+		reutnr false;
 	}
 }
 
