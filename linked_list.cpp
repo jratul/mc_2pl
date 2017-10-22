@@ -44,6 +44,7 @@ void LinkedList::moveCursorToPre(void) {
 }
 
 void LinkedList::addNodeToHead(node *newNode) {
+	cout << "add node to head" << endl;
 	if(head != NULL) {
 		newNode->next = head;
 		head->pre = newNode;
@@ -58,6 +59,7 @@ void LinkedList::addNodeToHead(node *newNode) {
 }
 
 void LinkedList::addNodeToTail(node *newNode) {
+	cout << "add node to tail" << endl;
 	if(tail != NULL) {
 		tail->next = newNode;
 		newNode->pre = tail;
