@@ -1,7 +1,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <fstream>
+#include <string>
 #include "headers/util.h"
+using namespace std;
 
 void logLine(string logData) {
 	cout << logData << endl;
