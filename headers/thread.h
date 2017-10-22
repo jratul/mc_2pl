@@ -1,6 +1,7 @@
 #ifndef THREAD
 #define THREAD
 #include<pthread.h>
+#include <set>
 #include "util.h"
 #include "rwlock.h"
 
