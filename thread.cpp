@@ -28,9 +28,10 @@ void* threadFunction(void* arg) {
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[0], tid, false);
 		record[randomNumbers[0]].pushBackLockList(&newNode[0]);
+		pthread_mutex_unlock(&globalMutex);
 		rwLock(randomNumbers[0], tid, false);
 		printLockList(randomNumbers[0], tid, false);
-		pthread_mutex_unlock(&globalMutex);
+		
 		iTemp = record[randomNumbers[0]].getRecordVal();
 		i = iTemp;
 		//cout << "thread " << tid << " first end" << endl;
@@ -40,9 +41,10 @@ void* threadFunction(void* arg) {
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[1], tid, true);
 		record[randomNumbers[1]].pushBackLockList(&newNode[1]);
+		pthread_mutex_unlock(&globalMutex);
 		rwLock(randomNumbers[1], tid, true);
 		printLockList(randomNumbers[1], tid, true);
-		pthread_mutex_unlock(&globalMutex);
+		
 		jTemp = record[randomNumbers[1]].getRecordVal();
 		j = jTemp + i + 1;
 		//cout << "thread " << tid << " second end" << endl;
@@ -52,9 +54,11 @@ void* threadFunction(void* arg) {
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[2], tid, true);
 		record[randomNumbers[2]].pushBackLockList(&newNode[2]);
-		rwLock(randomNumbers[2], tid, true);
-		printLockList(randomNumbers[2], tid, true);
 		pthread_mutex_unlock(&globalMutex);		
+		rwLock(randomNumbers[2], tid, true);
+
+		printLockList(randomNumbers[2], tid, true);
+		
 		kTemp = record[randomNumbers[2]].getRecordVal();
 		k = kTemp - i;
 		//cout << "thread " << tid << " third end" << endl;
