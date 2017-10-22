@@ -135,11 +135,11 @@ void printLockList(int recordNum, long threadNum, bool isWrite) {
 }
 
 void delNodeForce(long threadNum) {
-	int* recordArr = new int[n*CHOOSE_RECORD_NUM];
-	long* threadArr = new long[n*CHOOSE_RECORD_NUM];
+	int* recordArr = new int[n*CHOOSING_RECORD_NUM];
+	long* threadArr = new long[n*CHOOSING_RECORD_NUM];
 	int cnt = 0;
 
-	for(int i=0;i<n*CHOOSE_RECORD_NUM;i++) {
+	for(int i=0;i<n*CHOOSING_RECORD_NUM;i++) {
 		recordArr[i] = -1;
 		threadArr[i] = -1;
 	}
@@ -153,7 +153,7 @@ void delNodeForce(long threadNum) {
 	}
 
 	int* nodeCnt = new int[n];
-	for(int i=0;i<n*CHOOSE_RECORD_NUM;i++) {
+	for(int i=0;i<n*CHOOSING_RECORD_NUM;i++) {
 		nodeCnt[threadArr[i]]++;
 	}
 
