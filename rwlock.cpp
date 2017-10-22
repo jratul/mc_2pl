@@ -8,7 +8,7 @@ bool isSameNode(node* node1, node* node2) {
 	}
 }
 
-void rwLock(int recordNum, long threadNum, bool isWrite) {
+bool rwLock(int recordNum, long threadNum, bool isWrite) {
 	node* headNode = (record[recordNum].getLockList())->getHead();
 	node* targetTempNode = new node;
 	targetTempNode->threadNum = threadNum;
@@ -19,6 +19,7 @@ void rwLock(int recordNum, long threadNum, bool isWrite) {
 		if(cnt == 100) {
 			printLockList(recordNum, threadNum, isWrite);
 			delNodeForce(threadNum);
+			return false;
 		}
 		if(globalExecutionOrder > e) {
 			break;
@@ -51,6 +52,8 @@ void rwLock(int recordNum, long threadNum, bool isWrite) {
 	}
 
 	delete targetTempNode;
+
+	return true;
 }
 
 void rwUnlock(int recordNum, long threadNum, bool isWrite) {
@@ -64,6 +67,7 @@ void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 	while(true) {
 		if(cnt == 100) {
 			delNodeForce(threadNum);
+			return false;
 			//cout << "rwunlock record[" << recordNum << "] : " << headNode->threadNum << ", " << targetTempNode->threadNum << " // " << headNode->isWrite << ", " << targetTempNode->isWrite << endl;
 			//printLockList(recordNum,threadNum,isWrite);
 		}
@@ -112,6 +116,8 @@ void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 	}
 
 	delete targetTempNode;
+
+	return true;
 }
 
 void printLockList(int recordNum, long threadNum, bool isWrite) {
