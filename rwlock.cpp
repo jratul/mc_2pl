@@ -173,7 +173,9 @@ void delNodeForce(long threadNum) {
 		if((record[i].getLockList())->getHead() != NULL) {
 			if((record[i].getLockList())->getHead()->threadNum == smallestTid) {
 				cout << "del head!" << endl;
+				pthread_mutex_lock(&globalMutex);
 				(record[i].getLockList())->delNodeFromHead();
+				pthread_mutex_unlock(&globalMutex);
 			}
 		}
 	}
