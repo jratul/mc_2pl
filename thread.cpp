@@ -148,6 +148,7 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 
 bool checkProcess(node* cursor, long targetThreadNum, set<long> tidRecord, long startRecordNum) {
 	cout << "checkProcess for " << targetThreadNum << endl;
+	long startTid = cursor->threadNum;
 	while(cursor->pre != NULL) {
 		cursor = cursor->pre;
 
@@ -169,7 +170,8 @@ bool checkProcess(node* cursor, long targetThreadNum, set<long> tidRecord, long 
 		if(i == startRecordNum) continue;
 		if((record[i].getLockList())->getTail() != NULL) {
 			if((record[i].getLockList())->getTail()->threadNum == cursor->threadNum &&
-				(record[i].getLockList())->getTail()->threadNum != (record[i].getLockList())->getHead()->threadNum) {
+				(record[i].getLockList())->getTail()->threadNum != (record[i].getLockList())->getHead()->threadNum
+				&& cursor->threadNum != startTid) {
 				cout << "next thread num : " << cursor->threadNum << endl;
 				if(checkProcess(cursor, targetThreadNum, tidRecord, startRecordNum)) return true;
 			}
