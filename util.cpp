@@ -38,8 +38,6 @@ void printCommitLog(int commitId, int* idx, long valI, long valJ, long valK, lon
 	cout << commitId << " " << idx[0]+1 << " " << idx[1]+1 << " " << idx[2]+1 << " " << valI << " " << valJ << " " << valK << endl;
 	string fileName = "thread.txt";
 	fileName.insert(6, to_string(threadNum + 1));
-
-	cout << fileName << endl;
 	ofstream output(fileName, ios::app);
 	output << commitId << " " << idx[0]+1 << " " << idx[1]+1 << " " << idx[2]+1 << " " << valI << " " << valJ << " " << valK << endl;
 	output.close();
