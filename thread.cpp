@@ -5,7 +5,7 @@ void* threadFunction(void* arg) {
 	long tid = tp->threadNum;
 	int maxRecordNum = tp->maxRecordNum;
 
-	cout << tid << "thread start" << endl;
+	cout << tid << " thread start" << endl;
 
 	while(globalExecutionOrder < e) {
 		int* randomNumbers = new int[CHOOSING_THREAD_NUM];

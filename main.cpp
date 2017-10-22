@@ -61,10 +61,11 @@ int main(int argc, char* argv[]) {
 	}
 
 	threads = new pthread_t[n];
-	threadParam tp;
-	tp.threadNum = 0;
-	tp.maxRecordNum = r;
+	
 	for(int i=0;i<n;i++) {
+		threadParam tp;
+		tp.threadNum = i;
+		tp.maxRecordNum = r;
 		if(pthread_create(&threads[i], 0, threadFunction, (void*)&tp) < 0) {
 			printf("pthread_create error!\n");
 			return 0;
