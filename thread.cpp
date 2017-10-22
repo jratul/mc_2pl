@@ -134,8 +134,10 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 			node* cursor = (record[i].getLockList())->getHead();
 			set<long> tidRecord;
 			tidRecord.insert((record[i].getLockList())->getTail()->threadNum);
-			if(checkProcess(cursor, cursor->threadNum, tidRecord, i)) {
-				return true;
+			if((record[i].getLockList())->getHead()->threadNum != record[i].getLockList()->getTail()->threadNum) {
+				if(checkProcess(cursor, cursor->threadNum, tidRecord, i)) {
+					return true;
+				}
 			}
 		}
 	}
