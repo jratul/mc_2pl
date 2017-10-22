@@ -178,8 +178,8 @@ void delNodeForce(long threadNum) {
 		}
 	}
 
-	delete [] threadArr;
-	delete [] recordArr;
+	//delete [] threadArr;
+	//delete [] recordArr;
 
 }
 
