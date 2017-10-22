@@ -95,6 +95,7 @@ void* threadFunction(void* arg) {
 		globalExecutionOrder++;
 
 		if(globalExecutionOrder > e) {
+			cout << "rollback" << endl;
 			record[randomNumbers[0]].setRecordVal(iTemp);
 			record[randomNumbers[1]].setRecordVal(jTemp);
 			record[randomNumbers[2]].setRecordVal(kTemp);
@@ -105,7 +106,6 @@ void* threadFunction(void* arg) {
 		cout << "thread " << tid << " last end" << endl;
 		pthread_mutex_unlock(&globalMutex);
 		
-
 		delete [] randomNumbers;
 		delete [] newNode;
 	}
