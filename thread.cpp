@@ -34,9 +34,6 @@ void* threadFunction(void* arg) {
 		//rwLock(randomNumbers[0], tid, false);
 		pthread_mutex_unlock(&globalMutex);
 		
-		
-		
-		
 		iTemp = record[randomNumbers[0]].getRecordVal();
 		i = iTemp;
 		
@@ -81,20 +78,10 @@ void* threadFunction(void* arg) {
 		kTemp = record[randomNumbers[2]].getRecordVal();
 		k = kTemp - i;
 
-		if(rwLock(randomNumbers[0], tid, false)) {
-			delAllNodeFromThread(randomNumbers, tid);
-		 	continue;
-		 }
-		if(rwLock(randomNumbers[1], tid, true)) {
-			delAllNodeFromThread(randomNumbers, tid);
-			continue;
-		}
-		if(rwLock(randomNumbers[2], tid, true)) {
-			delAllNodeFromThread(randomNumbers, tid);
-			continue;
-		}
-		
-		//pthread_mutex_lock(&globalMutex);
+		rwLock(randomNumbers[0], tid, false);
+		rwLock(randomNumbers[1], tid, true);
+		rwLock(randomNumbers[2], tid, true);
+		pthread_mutex_lock(&globalMutex);
 		cout << "thread " << tid << " last start" << endl;
 		record[randomNumbers[0]].setRecordVal(i);
 		record[randomNumbers[1]].setRecordVal(j);
@@ -114,7 +101,7 @@ void* threadFunction(void* arg) {
 		}
 
 		cout << "thread " << tid << " last end" << endl;
-		//pthread_mutex_unlock(&globalMutex);
+		pthread_mutex_unlock(&globalMutex);
 		
 		delete [] randomNumbers;
 		delete [] newNode;
