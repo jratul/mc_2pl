@@ -31,7 +31,7 @@ void* threadFunction(void* arg) {
 		rwLock(randomNumbers[1], tid, true);
 		pthread_mutex_unlock(&globalMutex);
 		jTemp = record[randomNumbers[1]].getRecordVal();
-		j = i + jTemp;
+		j = i + 1;
 
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[2], tid, true);
