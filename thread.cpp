@@ -23,8 +23,9 @@ void* threadFunction(void* arg) {
 		}
 
 		randomNumbers = getRandomNumbers(randomNumbers, maxRecordNum);
+		printLockList(randomNumbers[0], tid, false);
 
-		cout << "thread " << tid << " first start" << endl;
+		//cout << "thread " << tid << " first start" << endl;
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[0], tid, false);
 		record[randomNumbers[0]].pushBackLockList(&newNode[0]);
@@ -32,9 +33,10 @@ void* threadFunction(void* arg) {
 		rwLock(randomNumbers[0], tid, false);
 		iTemp = record[randomNumbers[0]].getRecordVal();
 		i = iTemp;
-		cout << "thread " << tid << " first end" << endl;
+		//cout << "thread " << tid << " first end" << endl;
+		printLockList(randomNumbers[0], tid, false);
 
-		cout << "thread " << tid << " second start" << endl;
+		//cout << "thread " << tid << " second start" << endl;
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[1], tid, true);
 		record[randomNumbers[1]].pushBackLockList(&newNode[1]);
@@ -42,9 +44,10 @@ void* threadFunction(void* arg) {
 		rwLock(randomNumbers[1], tid, true);
 		jTemp = record[randomNumbers[1]].getRecordVal();
 		j = jTemp + i + 1;
-		cout << "thread " << tid << " second end" << endl;
+		//cout << "thread " << tid << " second end" << endl;
+		printLockList(randomNumbers[1], tid, true);
 
-		cout << "thread " << tid << " third start" << endl;
+		//cout << "thread " << tid << " third start" << endl;
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[2], tid, true);
 		record[randomNumbers[2]].pushBackLockList(&newNode[2]);
@@ -52,9 +55,10 @@ void* threadFunction(void* arg) {
 		rwLock(randomNumbers[2], tid, true);
 		kTemp = record[randomNumbers[2]].getRecordVal();
 		k = kTemp - i;
-		cout << "thread " << tid << " third end" << endl;
+		//cout << "thread " << tid << " third end" << endl;
+		printLockList(randomNumbers[2], tid, true);
 
-		cout << "thread " << tid << " last start" << endl;
+		//cout << "thread " << tid << " last start" << endl;
 		pthread_mutex_lock(&globalMutex);
 		record[randomNumbers[0]].setRecordVal(i);
 		record[randomNumbers[1]].setRecordVal(j);
@@ -73,7 +77,7 @@ void* threadFunction(void* arg) {
 		}
 
 		pthread_mutex_unlock(&globalMutex);
-		cout << "thread " << tid << " last end" << endl;
+		//cout << "thread " << tid << " last end" << endl;
 
 		delete [] randomNumbers;
 		delete [] newNode;

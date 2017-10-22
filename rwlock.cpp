@@ -73,7 +73,7 @@ void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 }
 
 void printLockList(int recordNum, long threadNum, bool isWrite) {
-	cout << "this is lock list of (" << recordNum << " " << threadNum << " " << isWrite << endl;
+	cout << "this is lock list of (" << recordNum << " " << threadNum << " " << isWrite << ")" endl;
 	for(int i=0;i<r;i++) {
 		if((record[i].getLockList())->getHead() != NULL) {
 			node* cursor = (record[i].getLockList())->getHead();
