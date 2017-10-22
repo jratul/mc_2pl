@@ -20,6 +20,9 @@ void rwLock(int recordNum, long threadNum, bool isWrite) {
 			cout << "cnt 1000" << endl;
 			printLockList(recordNum, threadNum, isWrite);
 		}
+		if(globalExecutionOrder > e) {
+			break;
+		}
 		if(isSameNode(headNode, targetTempNode)) {
 			break;
 		}
@@ -64,6 +67,10 @@ void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 			//printLockList(recordNum,threadNum,isWrite);
 		}
 		if(isSameNode(headNode, targetTempNode)) {
+			break;
+		}
+
+		if(globalExecutionOrder > e) {
 			break;
 		}
 
