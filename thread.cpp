@@ -31,7 +31,7 @@ void* threadFunction(void* arg) {
 		record[randomNumbers[0]].pushBackLockList(&newNode[0]);
 		printLockList(randomNumbers[0], tid, false);
 		cout << "thread " << tid << " first end" << endl;
-		//rwLock(randomNumbers[0], tid, false);
+		rwLock(randomNumbers[0], tid, false);
 		pthread_mutex_unlock(&globalMutex);
 		
 		
@@ -52,7 +52,7 @@ void* threadFunction(void* arg) {
 			pthread_mutex_unlock(&globalMutex);
 			continue;
 		}
-		//rwLock(randomNumbers[1], tid, true);
+		rwLock(randomNumbers[1], tid, true);
 		pthread_mutex_unlock(&globalMutex);
 		
 		
@@ -73,7 +73,7 @@ void* threadFunction(void* arg) {
 			pthread_mutex_unlock(&globalMutex);
 			continue;
 		}
-		//rwLock(randomNumbers[2], tid, true);
+		rwLock(randomNumbers[2], tid, true);
 		
 		pthread_mutex_unlock(&globalMutex);	
 		printLockList(randomNumbers[2], tid, true);
@@ -81,9 +81,9 @@ void* threadFunction(void* arg) {
 		kTemp = record[randomNumbers[2]].getRecordVal();
 		k = kTemp - i;
 
-		rwLock(randomNumbers[0], tid, false);
-		rwLock(randomNumbers[1], tid, true);
-		rwLock(randomNumbers[2], tid, true);
+		//rwLock(randomNumbers[0], tid, false);
+		//rwLock(randomNumbers[1], tid, true);
+		//rwLock(randomNumbers[2], tid, true);
 		
 		pthread_mutex_lock(&globalMutex);
 		cout << "thread " << tid << " last start" << endl;
