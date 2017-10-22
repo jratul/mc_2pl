@@ -86,8 +86,11 @@ void LinkedList::delNodeFromHead(void) {
 		head->pre = NULL;
 	} else {
 		cout << "delete node" << endl;
-		head->next = NULL;
-		head->pre = NULL;
+		if(head == tail) {
+			tail = NULL;
+		}
+		//head->next = NULL;
+		//head->pre = NULL;
 		head = NULL;
 	}
 }
@@ -101,8 +104,11 @@ void LinkedList::delNodeFromTail(void) {
 		tail = tail->pre;
 		tail->next = NULL;
 	} else {
-		tail->next = NULL;
-		tail->pre = NULL;
+		if(head == tail) {
+			head = NULL;
+		}
+		//tail->next = NULL;
+		//tail->pre = NULL;
 		tail = NULL;
 	}
 }
