@@ -18,7 +18,7 @@ linked_list.o : headers/linked_list.h linked_list.cpp
 	g++ -c linked_list.cpp
 
 util.o : headers/record.h headers/util.h util.cpp
-	g++ -c util.cpp
+	g++ -c util.cpp -std=c++11
 
 thread.o : headers/thread.h headers/rwlock.h headers/util.h thread.cpp
 	g++ -c thread.cpp -lpthread
