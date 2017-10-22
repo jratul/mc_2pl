@@ -66,6 +66,7 @@ int main(int argc, char* argv[]) {
 		threadParam tp;
 		tp.threadNum = i;
 		tp.maxRecordNum = r;
+		cout<< "main : " << tp.threadNum << endl;
 		if(pthread_create(&threads[i], 0, threadFunction, (void*)&tp) < 0) {
 			printf("pthread_create error!\n");
 			return 0;
