@@ -61,13 +61,13 @@ int main(int argc, char* argv[]) {
 	}
 
 	threads = new pthread_t[n];
+	threadParam* tp = new threadParam[n];
 	
 	for(int i=0;i<n;i++) {
-		threadParam tp;
-		tp.threadNum = i;
-		tp.maxRecordNum = r;
-		cout<< "main : " << tp.threadNum << endl;
-		if(pthread_create(&threads[i], 0, threadFunction, (void*)&tp) < 0) {
+		tp[i].threadNum = i;
+		tp[i].maxRecordNum = r;
+		cout<< "main : " << tp[i].threadNum << endl;
+		if(pthread_create(&threads[i], 0, threadFunction, (void*)&tp[i]) < 0) {
 			printf("pthread_create error!\n");
 			return 0;
 		}
@@ -76,6 +76,8 @@ int main(int argc, char* argv[]) {
 	for(int i=0;i<n;i++) {
 		pthread_join(threads[i],NULL);
 	}
+
+	delete [] threadParam;
 	delete [] threads;
 
 
