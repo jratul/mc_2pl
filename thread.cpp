@@ -120,7 +120,6 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 	}
 
 
-
 	/*
 	if(recordNumIdx == 1) {
 		if((record[0].getLockList())->getTail()->threadNum == headTid) {
@@ -149,7 +148,7 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 	}
 	*/
 
-	return false;
+	return checkProcess(head, threadNum);
 }
 
 bool checkProcess(node* cursor, long targetThreadNum) {
