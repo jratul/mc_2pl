@@ -81,11 +81,12 @@ void* threadFunction(void* arg) {
 		
 		kTemp = record[randomNumbers[2]].getRecordVal();
 		k = kTemp - i;
-		
-		pthread_mutex_lock(&globalMutex);
+
 		rwLock(randomNumbers[0], tid, false);
 		rwLock(randomNumbers[1], tid, true);
 		rwLock(randomNumbers[2], tid, true);
+		
+		pthread_mutex_lock(&globalMutex);
 		cout << "thread " << tid << " last start" << endl;
 		record[randomNumbers[0]].setRecordVal(i);
 		record[randomNumbers[1]].setRecordVal(j);
