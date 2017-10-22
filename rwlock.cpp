@@ -170,6 +170,7 @@ void delNodeForce(long threadNum) {
 	for(int i=0;i<r;i++) {
 		if((record[i].getLockList())->getHead() != NULL) {
 			if((record[i].getLockList())->getHead()->threadNum == smallestTid) {
+				cout << "del head!" << endl;
 				(record[i].getLockList())->delNodeFromHead();
 			}
 		}
