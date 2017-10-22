@@ -135,6 +135,7 @@ void printLockList(int recordNum, long threadNum, bool isWrite) {
 }
 
 void delNodeForce(long threadNum) {
+	cout << "delnodeforce" << endl;
 	int* recordArr = new int[n*CHOOSING_RECORD_NUM];
 	long* threadArr = new long[n*CHOOSING_RECORD_NUM];
 	int cnt = 0;
