@@ -162,7 +162,7 @@ void delNodeForce(long threadNum) {
 	int smallest = -1;
 	long smallestTid = 0;
 	for(int i=0;i<n;i++) {
-		if(nodeCnt[i] < smallest || smallest == -1) {
+		if((nodeCnt[i] < smallest || smallest == -1) && nodeCnt[i] > 0) {
 			smallest = nodeCnt[i];
 			smallestTid = i;
 		}
@@ -178,8 +178,8 @@ void delNodeForce(long threadNum) {
 		}
 	}
 
-	//delete [] threadArr;
-	//delete [] recordArr;
+	delete [] threadArr;
+	delete [] recordArr;
 
 }
 
