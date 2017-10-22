@@ -196,7 +196,8 @@ bool checkProcess(node* cursor, long targetThreadNum, set<long> tidRecord) {
 
 	for(int i=0;i<r;i++) {
 		if((record[r].getLockList())->getTail() != NULL) {
-			if((record[r].getLockList())->getTail()->threadNum == cursor->threadNum) {
+			if((record[r].getLockList())->getTail()->threadNum == cursor->threadNum &&
+				(record[r].getLockList())->getTail()->threadNum != (record[r].getLockList())->getHead()->threadNum) {
 				checkProcess(cursor, targetThreadNum, tidRecord);
 			}
 		}
