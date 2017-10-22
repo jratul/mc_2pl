@@ -81,7 +81,7 @@ void* threadFunction(void* arg) {
 		rwLock(randomNumbers[0], tid, false);
 		rwLock(randomNumbers[1], tid, true);
 		rwLock(randomNumbers[2], tid, true);
-		//pthread_mutex_lock(&globalMutex);
+		pthread_mutex_lock(&globalMutex);
 		cout << "thread " << tid << " last start" << endl;
 		record[randomNumbers[0]].setRecordVal(i);
 		record[randomNumbers[1]].setRecordVal(j);
@@ -101,7 +101,7 @@ void* threadFunction(void* arg) {
 		}
 
 		cout << "thread " << tid << " last end" << endl;
-		//pthread_mutex_unlock(&globalMutex);
+		pthread_mutex_unlock(&globalMutex);
 		
 		delete [] randomNumbers;
 		delete [] newNode;
@@ -121,62 +121,12 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 		return false;
 	}
 
-
-	/*
-	if(recordNumIdx == 1) {
-		if((record[0].getLockList())->getTail()->threadNum == headTid) {
-			return true;
-		}
-
-	} else if(recordNumIdx == 2) {
-		if((record[0].getLockList())->getTail()->threadNum == headTid) {
-
-		}
-	}
-
-
-	while(checkIdx >= 0) {
-		if((record[randomNumbers[checkIdx]].getLockList())->getTail()->threadNum == headTid) {
-			node* newCursor = (record[randomNumbers[checkIdx]].getLockList())->getTail();
-			newCursor = newCursor->pre;
-			while(newCursor != NULL) {
-				if(newCursor->threadNum == threadNum) {
-					return true;
-				}
-				newCursor = newCursor->pre;
-			}
-		}
-		checkIdx--;
-	}
-	*/
-
 	set<long> tidRecord;
 	tidRecord.insert(threadNum);
 	return checkProcess(cursor, threadNum, tidRecord);
 }
 
 bool checkProcess(node* cursor, long targetThreadNum, set<long> tidRecord) {
-	/*
-	cout << "checkprocess" << endl;
-	for(int i=0;i<r;i++) {
-		cout << "for " << i << endl;
-		if((record[r].getLockList())->getTail() !=NULL) {
-			if((record[r].getLockList())->getTail()->threadNum == cursor->threadNum) {
-				cout << "if " << i << endl;
-				node* newCursor = (record[r].getLockList())->getTail();
-				while(newCursor->pre != NULL) {
-					cout << "while " << endl;
-					newCursor = newCursor->pre;
-					if(newCursor->threadNum == targetThreadNum) {
-						cout << "if-if" <<endl;
-						return true;
-					}
-				}
-				checkProcess(newCursor, targetThreadNum);
-			}
-		}
-	}
-	*/
 
 	while(cursor->pre != NULL) {
 		cursor = cursor->pre;
@@ -200,7 +150,7 @@ bool checkProcess(node* cursor, long targetThreadNum, set<long> tidRecord) {
 			if((record[r].getLockList())->getTail()->threadNum == cursor->threadNum &&
 				(record[r].getLockList())->getTail()->threadNum != (record[r].getLockList())->getHead()->threadNum) {
 				cout << "next thread num : " << cursor->threadNum << endl;
-				return checkProcess(cursor, targetThreadNum, tidRecord);
+				if(checkProcess(cursor, targetThreadNum, tidRecord)) return true;
 			}
 		}
 	}
