@@ -56,6 +56,7 @@ void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 	targetTempNode->threadNum = threadNum;
 	targetTempNode->isWrite = isWrite;
 	int cnt = 0;
+	bool allRead = false;
 
 	while(true) {
 		if(cnt == 1000) {
@@ -64,6 +65,27 @@ void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 		}
 		if(isSameNode(headNode, targetTempNode)) {
 			break;
+		}
+
+		if(!isWrite) {
+			node* cursor = (record[recordNum].getLockList())->getHead();
+			allRead = true;
+			while(cursor != NULL) {
+				if(isSameNode(cursor, targetTempNode)) {
+					break;
+				}
+
+				if(cursor->isWrite) {
+					allRead = false;
+					break;
+				}
+
+				cursor = cursor->next;
+			}
+
+			if(allRead) {
+				break;
+			}
 		}
 		cnt++;
 	}

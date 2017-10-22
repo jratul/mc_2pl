@@ -102,6 +102,18 @@ void LinkedList::delNodeFromTail(void) {
 	}
 }
 
+void LinkedList::delNodeFromCursor(node *targetNode) {
+	if(targetNode == head) {
+		delNodeFromHead();
+	} else if(targetNode == tail) {
+		delNodeFromTail();
+	} else {
+		targetNode->pre->next = targetNode->next;
+		targetNode->next->pre = targetNode->pre;
+		targetNode = NULL;
+	}
+}
+
 
 
 
