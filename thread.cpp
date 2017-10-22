@@ -165,10 +165,10 @@ bool checkProcess(node* cursor, long targetThreadNum, set<long> tidRecord) {
 
 	for(int i=0;i<r;i++) {
 		cout << "in for" << endl;
-		if((record[r].getLockList())->getTail() != NULL) {
+		if((record[i].getLockList())->getTail() != NULL) {
 			cout << "in if 1" << endl;
-			if((record[r].getLockList())->getTail()->threadNum == cursor->threadNum &&
-				(record[r].getLockList())->getTail()->threadNum != (record[r].getLockList())->getHead()->threadNum) {
+			if((record[i].getLockList())->getTail()->threadNum == cursor->threadNum &&
+				(record[i].getLockList())->getTail()->threadNum != (record[i].getLockList())->getHead()->threadNum) {
 				cout << "next thread num : " << cursor->threadNum << endl;
 				if(checkProcess(cursor, targetThreadNum, tidRecord)) return true;
 			}
