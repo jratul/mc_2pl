@@ -71,7 +71,7 @@ void printLockList() {
 			node* cursor = record[i].getLockList()->getHead();
 			cout << "record[" << i << "] : ";
 			while(cursor != NULL) {
-				cout << "(" << cursor->threadNum << ", " << cursor->isWrite << ")"
+				cout << "(" << cursor->threadNum << ", " << cursor->isWrite << ")";
 				if(cursor->next != NULL) {
 					cout << " -> ";
 				}
