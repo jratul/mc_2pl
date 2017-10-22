@@ -32,6 +32,7 @@ void* threadFunction(void* arg) {
 		pthread_mutex_unlock(&globalMutex);
 		jTemp = record[randomNumbers[1]].getRecordVal();
 		j = i + 1;
+		cout << "i : " << i << " j : " << j << endl;
 
 		pthread_mutex_lock(&globalMutex);
 		createNewNode(&newNode[2], tid, true);
