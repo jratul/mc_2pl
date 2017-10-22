@@ -34,7 +34,7 @@ int* getRandomNumbers(int* randomNumbers, int maxRecordNum) {
 }
 
 void printCommitLog(int commitId, int* idx, long long valI, long long valJ, long long valK, long threadNum) {
-	cout << commitId << " " << idx[0]+1 << " " << idx[1]+1 << " " << idx[2]+1 << " " << valI << " " << valJ << " " << valK << endl;
+	//cout << commitId << " " << idx[0]+1 << " " << idx[1]+1 << " " << idx[2]+1 << " " << valI << " " << valJ << " " << valK << endl;
 	string fileName = "thread.txt";
 	fileName.insert(6, to_string(threadNum + 1));
 	ofstream output(fileName, ios::app);
