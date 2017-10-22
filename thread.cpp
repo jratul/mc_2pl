@@ -129,7 +129,7 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 	*/
 
 	for(int i=0;i<r;i++) {
-		if((record[r].getLockList())->getTail() != NULL){
+		if((record[i].getLockList())->getTail() != NULL){
 			cout << "find cycle" << endl;
 			node* cursor = (record[i].getLockList())->getHead();
 			set<long> tidRecord;
