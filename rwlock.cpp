@@ -9,23 +9,12 @@ bool isSameNode(node* node1, node* node2) {
 }
 
 void rwLock(int recordNum, long threadNum, bool isWrite) {
-	cout << "rwlock start" << endl;
 	node* headNode = (record[recordNum].getLockList())->getHead();
 	node* targetTempNode = new node;
 	targetTempNode->threadNum = threadNum;
 	targetTempNode->isWrite = isWrite;
 
-	node* cursor = (record[recordNum].getLockList())->getHead();
-	int cnt =0;
-	while(cursor != NULL && cnt < 10) {
-		cout << "cursor : (" << cursor->threadNum << ", " << cursor->isWrite << ")" << endl;
-		cnt++;
-		cursor = cursor->next;
-	}
-
 	while(true) {
-		cout << "rwlock while start" << endl;
-		cout << "rwlock - " << headNode->threadNum << ":" << targetTempNode->threadNum << ", " << headNode->isWrite << ":" << targetTempNode->isWrite <<endl;
 		if(isSameNode(headNode, targetTempNode)) {
 			break;
 		}
@@ -50,7 +39,6 @@ void rwLock(int recordNum, long threadNum, bool isWrite) {
 				break;
 			}
 		}
-		cout << "rwlock while end" << endl;
 	}
 
 	delete targetTempNode;

@@ -44,7 +44,6 @@ void LinkedList::moveCursorToPre(void) {
 }
 
 void LinkedList::addNodeToHead(node *newNode) {
-	cout << "add node to head" << endl;
 	if(head != NULL) {
 		newNode->next = head;
 		head->pre = newNode;
@@ -59,38 +58,30 @@ void LinkedList::addNodeToHead(node *newNode) {
 }
 
 void LinkedList::addNodeToTail(node *newNode) {
-	cout << "add node to tail" << endl;
 	if(tail != NULL) {
-		cout << "antt : if 1" << endl;
 		tail->next = newNode;
 		newNode->pre = tail;
 	} else {
-		cout << "antt : else " << endl;
 		cursor = newNode;
 	}
 	tail = newNode;
 
 	if(head == NULL) {
-		cout << "antt : if 2" << endl;
 		head = newNode;
 	}
 }
 
 void LinkedList::delNodeFromHead(void) {
 	if(head->next != NULL) {
-		cout << "del node : next is not null" << endl;
 		if(cursor == head) {
 			cursor = head->next;
 		} 
 		head = head->next;
 		head->pre = NULL;
 	} else {
-		cout << "delete node" << endl;
 		if(head == tail) {
 			tail = NULL;
 		}
-		//head->next = NULL;
-		//head->pre = NULL;
 		head = NULL;
 	}
 }
@@ -107,8 +98,6 @@ void LinkedList::delNodeFromTail(void) {
 		if(head == tail) {
 			head = NULL;
 		}
-		//tail->next = NULL;
-		//tail->pre = NULL;
 		tail = NULL;
 	}
 }
