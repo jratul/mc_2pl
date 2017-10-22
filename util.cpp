@@ -11,7 +11,7 @@ void logLine(string logData) {
 
 int* getRandomNumbers(int* randomNumbers, int maxRecordNum) { 
 
-	for(int i=0;i<CHOOSING_THREAD_NUM;i++) {
+	for(int i=0;i<CHOOSING_RECORD_NUM;i++) {
 		while(true) {
 			randomNumbers[i] = rand()%maxRecordNum;
 
