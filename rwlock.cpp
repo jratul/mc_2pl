@@ -14,7 +14,11 @@ void rwLock(int recordNum, long threadNum, bool isWrite) {
 	targetTempNode->threadNum = threadNum;
 	targetTempNode->isWrite = isWrite;
 
+	int cnt = 0;
 	while(true) {
+		if(cnt == 1000) {
+			printLockList();
+		}
 		if(isSameNode(headNode, targetTempNode)) {
 			break;
 		}
@@ -39,6 +43,7 @@ void rwLock(int recordNum, long threadNum, bool isWrite) {
 				break;
 			}
 		}
+		cnt++;
 	}
 
 	delete targetTempNode;
@@ -58,5 +63,23 @@ void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 	(record[recordNum].getLockList())->delNodeFromHead();
 
 	delete targetTempNode;
+}
+
+void printLockList() {
+	for(int i=0;i<r;i++) {
+		if(!record[i].getLockList()->getHead()) {
+			node* cursor = record[i].getLockList()->getHead();
+			cout << "record[" << i << "] : ";
+			while(cursor != NULL) {
+				cout << "(" << cursor->threadNum << ", " << cursor->isWrite ")"
+				if(cursor->next != NULL) {
+					cout << " -> ";
+				}
+				cursor = cursor->next;
+			}
+
+			cout << endl;
+		}
+	}
 }
 
