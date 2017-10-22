@@ -16,8 +16,7 @@ void rwLock(int recordNum, long threadNum, bool isWrite) {
 
 	int cnt = 0;
 	while(true) {
-		if(cnt == 1000) {
-			cout << "cnt 1000" << endl;
+		if(cnt == 100) {
 			printLockList(recordNum, threadNum, isWrite);
 			delNodeForce(threadNum);
 		}
@@ -63,7 +62,7 @@ void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 	bool allRead = false;
 
 	while(true) {
-		if(cnt == 1000) {
+		if(cnt == 100) {
 			delNodeForce(threadNum);
 			//cout << "rwunlock record[" << recordNum << "] : " << headNode->threadNum << ", " << targetTempNode->threadNum << " // " << headNode->isWrite << ", " << targetTempNode->isWrite << endl;
 			//printLockList(recordNum,threadNum,isWrite);
