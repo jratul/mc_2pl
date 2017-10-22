@@ -27,4 +27,4 @@ rwlock.h : headers/rwlock.h headers/util.h rwlock.cpp
 	g++ -c rwlock.cpp
 
 clean :
-	-rm *.o run
+	-rm *.o run *.txt
