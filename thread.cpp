@@ -178,12 +178,14 @@ bool checkProcess(node* cursor, long targetThreadNum, set<long> tidRecord) {
 
 	while(cursor->pre != NULL) {
 		cursor = cursor->pre;
-		pair<set<int>::iterator, bool> pr;
-		pr = tidRecord.insert(cursor->threadNum);
 
-		if(pr.second != true) {
-			return true;
+		set<long>::iterator iter;
+		for(iter = tidRecord.begin(); iter!= tidRecord.end(); iter++) {
+			if(*iter == cursor->threadNum) {
+				return true;
+			}
 		}
+		tidRecord.insert(cursor->threadNum);
 	}
 
 	for(int i=0;i<r;i++) {
