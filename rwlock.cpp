@@ -19,6 +19,7 @@ void rwLock(int recordNum, long threadNum, bool isWrite) {
 		if(cnt == 1000) {
 			cout << "cnt 1000" << endl;
 			printLockList(recordNum, threadNum, isWrite);
+			delNodeForce(threadNum);
 		}
 		if(globalExecutionOrder > e) {
 			break;
@@ -63,6 +64,7 @@ void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 
 	while(true) {
 		if(cnt == 1000) {
+			delNodeForce(threadNum);
 			//cout << "rwunlock record[" << recordNum << "] : " << headNode->threadNum << ", " << targetTempNode->threadNum << " // " << headNode->isWrite << ", " << targetTempNode->isWrite << endl;
 			//printLockList(recordNum,threadNum,isWrite);
 		}
@@ -131,4 +133,56 @@ void printLockList(int recordNum, long threadNum, bool isWrite) {
 		}
 	}
 }
+
+void delNodeForce(long threadNum) {
+	int* recordArr = new int[n*CHOOSE_RECORD_NUM];
+	long* threadArr = new long[n*CHOOSE_RECORD_NUM];
+	int cnt = 0;
+
+	for(int i=0;i<n*CHOOSE_RECORD_NUM;i++) {
+		recordArr[i] = -1;
+		threadArr[i] = -1;
+	}
+
+	for(int i=0;i<r;i++) {
+		if((record[i].getLockList())->getHead() != NULL) {
+			recordArr[cnt] = i;
+			threadArr[cnt] = (record[i].getLockList())->getHead()->threadNum;
+			cnt++;
+		}
+	}
+
+	int* nodeCnt = new int[n];
+	for(int i=0;i<n*CHOOSE_RECORD_NUM;i++) {
+		nodeCnt[threadArr[i]]++;
+	}
+
+	int smallest = -1;
+	long smallestTid = 0;
+	for(int i=0;i<n;i++) {
+		if(nodeCnt[i] < smallest || smallest == -1) {
+			smallest = nodeCnt[i];
+			smallestTid = i;
+		}
+	}
+
+	for(int i=0;i<r;i++) {
+		if((record[i].getLockList())->getHead() != NULL) {
+			if((record[i].getLockList())->getHead()->threadNum == smallestTid) {
+				(record[i].getLockList())->delNodeFromHead();
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
 
