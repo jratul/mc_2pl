@@ -58,7 +58,7 @@ void* threadFunction(void* arg) {
 		record[randomNumbers[2]].pushBackLockList(&newNode[2]);
 		printLockList(randomNumbers[1], tid, true);
 		rwLock(randomNumbers[2], tid, true);
-		pthread_mutex_unlock(&globalMutex);	
+		//pthread_mutex_unlock(&globalMutex);	
 		printLockList(randomNumbers[2], tid, true);
 		
 		kTemp = record[randomNumbers[2]].getRecordVal();
@@ -67,7 +67,7 @@ void* threadFunction(void* arg) {
 		
 
 		//cout << "thread " << tid << " last start" << endl;
-		pthread_mutex_lock(&globalMutex);
+		//pthread_mutex_lock(&globalMutex);
 		record[randomNumbers[0]].setRecordVal(i);
 		record[randomNumbers[1]].setRecordVal(j);
 		record[randomNumbers[2]].setRecordVal(k);
