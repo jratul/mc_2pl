@@ -186,7 +186,7 @@ bool isFromSameThread(node* node1, node* node2) {
 	if(node1->threadNum == node2->threadNum) {
 		return true;
 	} else {
-		reutnr false;
+		return false;
 	}
 }
 
