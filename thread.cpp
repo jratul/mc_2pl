@@ -13,12 +13,12 @@ void* threadFunction(void* arg) {
 	output.close();
 
 	while(globalExecutionOrder < e) {
-		int* randomNumbers = new int[CHOOSING_THREAD_NUM];
+		int* randomNumbers = new int[CHOOSING_RECORD_NUM];
 		long long i,j,k;
 		long long iTemp, jTemp, kTemp;
-		node* newNode = new node[CHOOSING_THREAD_NUM];
+		node* newNode = new node[CHOOSING_RECORD_NUM];
 
-		for(int idx=0;idx<CHOOSING_THREAD_NUM;idx++) {
+		for(int idx=0;idx<CHOOSING_RECORD_NUM;idx++) {
 			randomNumbers[idx] = -1;
 		}
 
@@ -46,6 +46,7 @@ void* threadFunction(void* arg) {
 		printLockList(randomNumbers[1], tid, true);
 		cout << "thread " << tid << " second end" << endl;
 		if(checkCycle(1, randomNumbers, tid)) {
+			delAllNodeFromThread(randomNumbers, tid);
 			pthread_mutex_unlock(&globalMutex);
 			continue;
 		}
@@ -67,6 +68,7 @@ void* threadFunction(void* arg) {
 		printLockList(randomNumbers[1], tid, true);
 		cout << "thread " << tid << " third end" << endl;
 		if(checkCycle(2, randomNumbers, tid)) {
+			delAllNodeFromThread(randomNumbers, tid);
 			pthread_mutex_unlock(&globalMutex);
 			continue;
 		}
@@ -127,9 +129,19 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 	return false;
 }
 
+void delAllNodeFromThread(int* randomNumbers, long threadNum) {
+	for(int i=0;i<CHOOSING_RECORD_NUM;i++) {
+		node* cursor = (record[randomNumbers[i]].getLockList())->getHead();
 
-
-
+		while(cursor != NULL) {
+			if(cursor->threadNum == threadNum) {
+				delNodeFromCursor(cursor);
+				break;
+			}
+			cursor = cursor->next;
+		}
+	}
+}
 
 
 

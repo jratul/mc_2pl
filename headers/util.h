@@ -4,7 +4,7 @@
 #include<string>
 #include<pthread.h>
 #include "record.h"
-#define CHOOSING_THREAD_NUM 3
+#define CHOOSING_RECORD_NUM 3
 using namespace std;
 
 extern int n;
