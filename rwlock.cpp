@@ -16,6 +16,7 @@ void rwLock(int recordNum, long threadNum, bool isWrite) {
 
 	int cnt = 0;
 	while(true) {
+		cout << "rwLock while" << endl;
 		if(cnt == 1000) {
 			printLockList();
 		}
@@ -66,6 +67,7 @@ void rwUnlock(int recordNum, long threadNum, bool isWrite) {
 }
 
 void printLockList() {
+	cout << endl;
 	for(int i=0;i<r;i++) {
 		if(!record[i].getLockList()->getHead()) {
 			node* cursor = record[i].getLockList()->getHead();
@@ -78,7 +80,7 @@ void printLockList() {
 				cursor = cursor->next;
 			}
 
-			cout << endl;
+			cout << endl << endl;
 		}
 	}
 }
