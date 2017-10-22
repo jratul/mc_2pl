@@ -126,6 +126,7 @@ bool checkCycle(int recordNumIdx, int* randomNumbers, long threadNum) {
 			(record[randomNumbers[checkIdx]].getLockList())->getHead()->threadNum != headTid) {
 			return true;
 		}
+		checkIdx--;
 	}
 
 	return false;
