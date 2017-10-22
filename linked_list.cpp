@@ -61,14 +61,17 @@ void LinkedList::addNodeToHead(node *newNode) {
 void LinkedList::addNodeToTail(node *newNode) {
 	cout << "add node to tail" << endl;
 	if(tail != NULL) {
+		cout << "antt : if 1" << endl;
 		tail->next = newNode;
 		newNode->pre = tail;
 	} else {
+		cout << "antt : else " << endl;
 		cursor = newNode;
 	}
 	tail = newNode;
 
 	if(head == NULL) {
+		cout << "antt : if 2" << endl;
 		head = newNode;
 	}
 }
