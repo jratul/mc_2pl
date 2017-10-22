@@ -147,6 +147,7 @@ bool checkProcess(node* cursor, long targetThreadNum, set<long> tidRecord) {
 
 	for(int i=0;i<r;i++) {
 		if((record[r].getLockList())->getTail() != NULL) {
+			cout << "in if 1" << endl;
 			if((record[r].getLockList())->getTail()->threadNum == cursor->threadNum &&
 				(record[r].getLockList())->getTail()->threadNum != (record[r].getLockList())->getHead()->threadNum) {
 				cout << "next thread num : " << cursor->threadNum << endl;
