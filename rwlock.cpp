@@ -16,10 +16,10 @@ void rwLock(int recordNum, long threadNum, bool isWrite) {
 
 	int cnt = 0;
 	while(true) {
-		/*if(cnt == 1000) {
+		if(cnt == 1000) {
 			cout << "cnt 1000" << endl;
 			printLockList(recordNum, threadNum, isWrite);
-		}*/
+		}
 		if(isSameNode(headNode, targetTempNode)) {
 			break;
 		}
